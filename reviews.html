@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RescueLink | Customer Reviews & Testimonials</title>
+    <!-- Tailwind CSS Engine CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Customizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            blue: {
+                                50: '#F0F5FA',
+                                100: '#DDE7F5',
+                                500: '#0B47A1', // Primary Trust Blue
+                                600: '#0A3F91',
+                                900: '#062352',
+                            },
+                            orange: {
+                                50: '#FFF3EB',
+                                500: '#FF6B00', // Safety Accent Orange
+                                600: '#E66000',
+                            },
+                            neutral: {
+                                dark: '#1E293B',
+                                light: '#64748B',
+                                bg: '#F8FAFC'
+                            }
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(11, 71, 161, 0.05), 0 2px 8px -1px rgba(11, 71, 161, 0.03)',
+                        'card': '0 10px 30px -5px rgba(11, 71, 161, 0.04), 0 4px 12px -2px rgba(11, 71, 161, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-neutral-bg text-brand-neutral-dark min-h-screen antialiased pt-24 pb-12">
+
+    <!-- STICKY NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 h-20 bg-white/90 backdrop-blur-md border-b border-brand-blue-50/50 shadow-soft z-50">
+        <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2.5 text-xl font-black text-brand-blue-500 tracking-tight">
+                <div class="p-2 bg-brand-orange-500 rounded-xl text-white shadow-md flex items-center justify-center">
+                    <svg class="w-5 h-5 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.242.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.772-.568-.372-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                </div>
+                <span>RESCUE<span class="text-brand-orange-500">LINK</span></span>
+            </a>
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Home</a>
+                <a href="#" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Dashboard</a>
+                <a href="#" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Nearby Mechanics</a>
+                <a href="track.html" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Live Tracking</a>
+                <a href="#" class="text-sm font-bold text-brand-orange-500">Reviews</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        
+        <!-- PAGE HEADER HEADER TITLE BLOCK -->
+        <header class="text-center max-w-2xl mx-auto mb-12">
+            <h1 class="text-4xl font-extrabold text-brand-blue-900 tracking-tight sm:text-5xl">
+                Trusted by Thousands of <span class="text-brand-orange-500">Stranded Motorists</span>
+            </h1>
+            <p class="mt-4 text-base text-brand-neutral-light font-medium leading-relaxed">
+                See real-time feedback verified directly from service response dispatches across the nationwide emergency fleet network.
+            </p>
+        </header>
+
+        <!-- ANALYTICS SCOREBOARD ROW BOX MATRIX -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white p-6 sm:p-8 rounded-3xl border border-brand-blue-50 shadow-card mb-12">
+            
+            <!-- Big Score Column -->
+            <div class="flex flex-col items-center justify-center text-center lg:border-r border-brand-blue-50 lg:pr-8 py-4">
+                <p class="text-6xl font-black text-brand-blue-900">4.9</p>
+                <div class="flex gap-1 my-2 text-amber-500">
+                    <!-- 5 Heavy Gold Stars -->
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                </div>
+                <p class="text-xs font-bold uppercase tracking-wider text-brand-neutral-light mt-1">Based on 14,820 dispatches</p>
+            </div>
+
+            <!-- Horizontal Bars Distribution Column -->
+            <div class="flex flex-col justify-center space-y-2.5 lg:px-8 py-4 lg:col-span-2 md:relative">
+                <!-- 5 Star Bar -->
+                <div class="flex items-center gap-4 text-xs font-bold text-brand-blue-900">
+                    <span class="w-12 text-right">5 Star</span>
+                    <div class="flex-grow bg-brand-blue-50 h-3 rounded-full overflow-hidden">
+                        <div class="bg-brand-blue-500 h-full w-[92%] rounded-full"></div>
+                    </div>
+                    <span class="w-10 text-brand-neutral-light text-right">92%</span>
+                </div>
+                <!-- 4 Star Bar -->
+                <div class="flex items-center gap-4 text-xs font-bold text-brand-blue-900">
+                    <span class="w-12 text-right">4 Star</span>
+                    <div class="flex-grow bg-brand-blue-50 h-3 rounded-full overflow-hidden">
+                        <div class="bg-brand-blue-500 h-full w-[6%] rounded-full"></div>
+                    </div>
+                    <span class="w-10 text-brand-neutral-light text-right">6%</span>
+                </div>
+                <!-- 3 Star Bar -->
+                <div class="flex items-center gap-4 text-xs font-bold text-brand-blue-900">
+                    <span class="w-12 text-right">3 Star</span>
+                    <div class="flex-grow bg-brand-blue-50 h-3 rounded-full overflow-hidden">
+                        <div class="bg-brand-blue-500 h-full w-[1%] rounded-full"></div>
+                    </div>
+                    <span class="w-10 text-brand-neutral-light text-right">1%</span>
+                </div>
+                <!-- 2/1 Star Hidden For Clean Space Distribution -->
+                <button onclick="openReviewModal()" class="md:absolute md:right-4 md:top-1/2 md:-translate-y-1/2 mt-4 md:mt-0 w-full md:w-auto px-6 py-3.5 bg-brand-orange-500 hover:bg-brand-orange-600 text-white font-bold rounded-xl shadow-md transition-all duration-150 text-sm whitespace-nowrap">
+                    Write a Review
+                </button>
+            </div>
+        </section>
+
+        <!-- FILTER CHIP LIST ROW -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-neutral-light mr-2 whitespace-nowrap">Filter By:</span>
+            <button class="px-4 py-2 text-xs font-bold bg-brand-blue-900 text-white rounded-full transition-all">All Reviews</button>
+            <button class="px-4 py-2 text-xs font-bold bg-white text-brand-blue-900 hover:bg-brand-blue-50 border border-brand-blue-100 rounded-full transition-all whitespace-nowrap">Flat Bed Towing</button>
+            <button class="px-4 py-2 text-xs font-bold bg-white text-brand-blue-900 hover:bg-brand-blue-50 border border-brand-blue-100 rounded-full transition-all whitespace-nowrap">Tire Blowout</button>
+            <button class="px-4 py-2 text-xs font-bold bg-white text-brand-blue-900 hover:bg-brand-blue-50 border border-brand-blue-100 rounded-full transition-all whitespace-nowrap">Dead Battery Jump</button>
+            <button class="px-4 py-2 text-xs font-bold bg-white text-brand-blue-900 hover:bg-brand-blue-50 border border-brand-blue-100 rounded-full transition-all whitespace-nowrap">Midnight Dispatches</button>
+        </div>
+
+        <!-- REVIEWS GRID LAYOUT -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- CARD 1 -->
+            <article class="bg-white p-6 rounded-2xl border border-brand-blue-50 shadow-soft flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex gap-3 items-center">
+                            <div class="w-10 h-10 bg-brand-blue-900 text-white font-bold rounded-lg flex items-center justify-center text-sm">RH</div>
+                            <div>
+                                <h3 class="font-bold text-sm text-brand-blue-900">Rohan Harish</h3>
+                                <p class="text-[11px] text-brand-neutral-light font-medium">Stranded on NH-8 Expressway</p>
+                            </div>
+                        </div>
+                        <span class="text-[11px] text-brand-neutral-light font-bold bg-brand-blue-50 px-2 py-0.5 rounded border border-brand-blue-100/50">Verified Fleet Log</span>
+                    </div>
+                    <div class="flex gap-0.5 text-amber-500 mb-2.5">
+                        <span class="text-sm">★★★★★</span>
+                    </div>
+                    <p class="text-sm font-medium text-brand-neutral-dark/90 leading-relaxed">
+                        "Engine overheated in absolute heavy traffic. The live tracking view on the app map was an absolute lifesaver. Kept me from panicking because I could see the tow truck move blocks in real time. Driver arrived in 14 minutes flat."
+                    </p>
+                </div>
+                <p class="text-[10px] text-brand-neutral-light font-bold uppercase tracking-wide mt-4 pt-4 border-t border-brand-blue-50">Service Asset: Heavy Duty Flatbed • May 2026</p>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="bg-white p-6 rounded-2xl border border-brand-blue-50 shadow-soft flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex gap-3 items-center">
+                            <div class="w-10 h-10 bg-brand-orange-500 text-white font-bold rounded-lg flex items-center justify-center text-sm">MS</div>
+                            <div>
+                                <h3 class="font-bold text-sm text-brand-blue-900">Meera Shah</h3>
+                                <p class="text-[11px] text-brand-neutral-light font-medium">Hostel Campus Gate, Anand</p>
+                            </div>
+                        </div>
+                        <span class="text-[11px] text-brand-neutral-light font-bold bg-brand-blue-50 px-2 py-0.5 rounded border border-brand-blue-100/50">Verified Fleet Log</span>
+                    </div>
+                    <div class="flex gap-0.5 text-amber-500 mb-2.5">
+                        <span class="text-sm">★★★★★</span>
+                    </div>
+                    <p class="text-sm font-medium text-brand-neutral-dark/90 leading-relaxed">
+                        "Got a completely flat tire right outside my college hostel gates late at night. Used RescueLink and mechanic Alex arrived so quickly with proper tools. He was extremely respectful, fast, and professional."
+                    </p>
+                </div>
+                <p class="text-[10px] text-brand-neutral-light font-bold uppercase tracking-wide mt-4 pt-4 border-t border-brand-blue-50">Service Asset: Quick Tire Repair • Apr 2026</p>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="bg-white p-6 rounded-2xl border border-brand-blue-50 shadow-soft flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex gap-3 items-center">
+                            <div class="w-10 h-10 bg-slate-700 text-white font-bold rounded-lg flex items-center justify-center text-sm">DP</div>
+                            <div>
+                                <h3 class="font-bold text-sm text-brand-blue-900">Dev Patel</h3>
+                                <p class="text-[11px] text-brand-neutral-light font-medium">Basement Parking Complex</p>
+                            </div>
+                        </div>
+                        <span class="text-[11px] text-brand-neutral-light font-bold bg-brand-blue-50 px-2 py-0.5 rounded border border-brand-blue-100/50">Verified Fleet Log</span>
+                    </div>
+                    <div class="flex gap-0.5 text-amber-500 mb-2.5">
+                        <span class="text-sm">★★★★★</span>
+                    </div>
+                    <p class="text-sm font-medium text-brand-neutral-dark/90 leading-relaxed">
+                        "Battery died after leaving headlights on all afternoon. The operator handled everything transparently. No hidden charges or awkward negotiating like local shops usually do. Super seamless experience for students."
+                    </p>
+                </div>
+                <p class="text-[10px] text-brand-neutral-light font-bold uppercase tracking-wide mt-4 pt-4 border-t border-brand-blue-50">Service Asset: Jumpstart Battery Unit • Mar 2026</p>
+            </article>
+        </section>
+
+    </main>
+
+    <!-- FLOATING REVIEW INTERACTION MODAL CONTAINER DIALOG -->
+    <div id="review-modal" class="fixed inset-0 bg-brand-blue-900/40 backdrop-blur-sm z-[1000] hidden items-center justify-center p-4 transition-all duration-200">
+        <div class="bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl relative border border-brand-blue-100 animate-in fade-in zoom-in-95 duration-150">
+            <!-- Close Button Header Trigger -->
+            <button onclick="closeReviewModal()" class="absolute top-5 right-5 p-2 rounded-xl text-brand-neutral-light hover:bg-brand-blue-50 hover:text-brand-blue-900 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <h2 class="text-2xl font-black text-brand-blue-900 tracking-tight mb-1">Share Your Dispatch Feedback</h2>
+            <p class="text-xs font-semibold text-brand-neutral-light mb-6">Your experience helps keep our roadside community safe and clear.</p>
+
+            <!-- Submission Form Engine Nodes -->
+            <form onsubmit="submitFormEngine(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Your Name</label>
+                    <input type="text" required placeholder="e.g. Priya Chauhan" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Experience Rating</label>
+                    <div class="flex gap-1 text-2xl text-brand-blue-100 cursor-pointer" id="modal-star-row">
+                        <span onclick="setModalStars(1)" class="star-node hover:text-amber-500 transition-colors">★</span>
+                        <span onclick="setModalStars(2)" class="star-node hover:text-amber-500 transition-colors">★</span>
+                        <span onclick="setModalStars(3)" class="star-node hover:text-amber-500 transition-colors">★</span>
+                        <span onclick="setModalStars(4)" class="star-node hover:text-amber-500 transition-colors">★</span>
+                        <span onclick="setModalStars(5)" class="star-node hover:text-amber-500 transition-colors">★</span>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Assigned Assistance Category</label>
+                    <select class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium text-brand-neutral-dark">
+                        <option>Flat Bed Towing Fleet</option>
+                        <option>Battery Replacement Service</option>
+                        <option>Emergency Fuel Delivery</option>
+                        <option>Locked Key Retrieval</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Detailed Feedback Description</label>
+                    <textarea rows="4" required placeholder="Describe how quickly the service vehicle cleared the road or how accurate the map telemetry tracking window was..." class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium"></textarea>
+                </div>
+
+                <div class="pt-2 flex gap-3">
+                    <button type="button" onclick="closeReviewModal()" class="w-1/3 py-3 text-sm font-bold text-brand-blue-900 bg-brand-blue-50 hover:bg-brand-blue-100 rounded-xl transition-colors">Cancel</button>
+                    <button type="submit" class="w-2/3 py-3 text-sm font-bold text-white bg-brand-blue-500 hover:bg-brand-blue-600 rounded-xl shadow-soft transition-all">Publish Live Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- CODE INTERACTIVE HOOK ACTIONS ENGINE -->
+    <script>
+        let assignedRating = 0;
+
+        function openReviewModal() {
+            const modal = document.getElementById('review-modal');
+            modal.style.display = 'flex';
+        }
+
+        function closeReviewModal() {
+            const modal = document.getElementById('review-modal');
+            modal.style.display = 'none';
+            setModalStars(0); // Reset UI context array references cleanly
+        }
+
+        function setModalStars(ratingValue) {
+            assignedRating = ratingValue;
+            const stars = document.querySelectorAll('#modal-star-row .star-node');
+            stars.forEach((star, index) => {
+                if (index < ratingValue) {
+                    star.classList.remove('text-brand-blue-100');
+                    star.classList.add('text-amber-500');
+                } else {
+                    star.classList.remove('text-amber-500');
+                    star.classList.add('text-brand-blue-100');
+                }
+            });
+        }
+
+        function submitFormEngine(event) {
+            event.preventDefault();
+            if(assignedRating === 0) {
+                alert("Please select a star value score breakdown profile metrics mapping before publishing.");
+                return;
+            }
+            alert("Thank you! Your verified roadside dispatch feedback submission has been queued into our approval staging network node pipeline completely.");
+            closeReviewModal();
+        }
+    </script>
+</body>
+</html>

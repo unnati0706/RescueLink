@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RescueLink | Live Telemetry Dispatch Tracking</title>
+    <!-- Tailwind CSS Engine CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Leaflet.js Mapping Infrastructure CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Font Customizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            blue: {
+                                50: '#F0F5FA',
+                                100: '#DDE7F5',
+                                500: '#0B47A1', // Primary Trust Blue
+                                600: '#0A3F91',
+                                900: '#062352',
+                            },
+                            orange: {
+                                50: '#FFF3EB',
+                                500: '#FF6B00', // Safety Accent Orange
+                                600: '#E66000',
+                            },
+                            neutral: {
+                                dark: '#1E293B',
+                                light: '#64748B',
+                                bg: '#F8FAFC'
+                            }
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(11, 71, 161, 0.05), 0 2px 8px -1px rgba(11, 71, 161, 0.03)',
+                        'glass': '0 8px 32px 0 rgba(11, 71, 161, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        /* Custom map styling over Leaflet UI */
+        .leaflet-container { font-family: inherit; }
+        .leaflet-bar { border: none !important; box-shadow: 0 4px 20px rgba(11, 71, 161, 0.08) !important; }
+        .leaflet-bar a { border-bottom: 1px solid #F0F5FA !important; color: #0B47A1 !important; }
+    </style>
+</head>
+<body class="bg-brand-neutral-bg text-brand-neutral-dark min-h-screen antialiased flex flex-col justify-between">
+
+    <!-- STICKY NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 h-20 bg-white/90 backdrop-blur-md border-b border-brand-blue-50/50 shadow-soft z-[1000]">
+        <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2.5 text-xl font-black text-brand-blue-500 tracking-tight">
+                <div class="p-2 bg-brand-orange-500 rounded-xl text-white shadow-md flex items-center justify-center">
+                    <svg class="w-5 h-5 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.242.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.772-.568-.372-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                </div>
+                <span>RESCUE<span class="text-brand-orange-500">LINK</span></span>
+            </a>
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Home</a>
+                <a href="#" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Dashboard</a>
+                <a href="#" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Nearby Mechanics</a>
+                <a href="#" class="text-sm font-bold text-brand-orange-500">Live Tracking</a>
+                <a href="#" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">About</a>
+            </div>
+            <button id="menu-btn" class="lg:hidden p-2 text-brand-blue-900 hover:text-brand-orange-500 rounded-xl transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- LIVE TELEMETRY CONTENT WRAPPER -->
+    <main class="flex-grow pt-20 h-[calc(100vh-5rem)] flex flex-col lg:flex-row overflow-hidden">
+        
+        <!-- SIDEBAR INTERFACE: TELEMETRY CONTROL MATRIX (Left Pane) -->
+        <section class="w-full lg:w-[420px] bg-white border-b lg:border-b-0 lg:border-r border-brand-blue-100/60 shadow-xl overflow-y-auto flex flex-col justify-between z-10 order-2 lg:order-1">
+            
+            <!-- Tracking Status Header Block -->
+            <div class="p-6 border-b border-brand-blue-50">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border bg-brand-blue-50 text-brand-blue-500 border-brand-blue-100">
+                        <span class="w-2 h-2 rounded-full bg-brand-blue-500 mr-2 animate-ping"></span>
+                        En Route to Dispatched Location
+                    </span>
+                    <span class="text-xs text-brand-neutral-light font-medium">Ticket: #9042-SOS</span>
+                </div>
+                
+                <!-- ETA Metric Array -->
+                <div class="grid grid-cols-2 gap-4 bg-gradient-to-br from-brand-blue-50 to-brand-neutral-bg p-4 rounded-xl border border-brand-blue-100/30">
+                    <div>
+                        <p class="text-xs text-brand-neutral-light font-medium uppercase tracking-wider mb-0.5">Estimated Arrival</p>
+                        <p id="eta-timer" class="text-2xl font-black text-brand-blue-900 tracking-tight">12 Mins</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-brand-neutral-light font-medium uppercase tracking-wider mb-0.5">Distance Left</p>
+                        <p id="distance-metric" class="text-2xl font-black text-brand-blue-500 tracking-tight">4.2 Miles</p>
+                    </div>
+                </div>
+
+                <!-- Dynamic Telemetry Visual Progress Track -->
+                <div class="mt-5">
+                    <div class="w-full bg-brand-blue-100 h-2 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="bg-gradient-to-r from-brand-blue-500 to-brand-orange-500 h-full w-[35%] transition-all duration-1000 ease-out"></div>
+                    </div>
+                    <div class="flex justify-between text-[11px] text-brand-neutral-light font-bold mt-2 uppercase tracking-wide">
+                        <span>Incident Logged</span>
+                        <span class="text-brand-orange-500">Dispatch Approaching</span>
+                        <span>Resolved</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mechanic Informational Dossier Profile Block -->
+            <div class="p-6 border-b border-brand-blue-50 flex-grow">
+                <h3 class="text-xs font-bold uppercase text-brand-neutral-light tracking-widest mb-4">Assigned Service Professional</h3>
+                <div class="flex gap-4 items-center bg-white border border-brand-blue-50 p-4 rounded-xl shadow-soft">
+                    <!-- Provider Avatar Container -->
+                    <div class="w-14 h-14 rounded-xl bg-brand-blue-900 text-white flex items-center justify-center font-black text-xl relative shadow-md">
+                        AM
+                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-brand-blue-900 text-base">Alex Mercer</h4>
+                        <p class="text-xs text-brand-neutral-light mt-0.5">Elite Certified Heavy Duty Fleet Wrecker</p>
+                        <div class="flex items-center gap-1.5 mt-1.5">
+                            <svg class="w-3.5 h-3.5 text-amber-500 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <span class="text-xs font-bold text-brand-blue-900">4.96</span>
+                            <span class="text-xs text-brand-neutral-light font-medium">(214 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Dispatch Asset Profile -->
+                <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
+                    <div class="p-3 bg-brand-neutral-bg border border-brand-blue-50/50 rounded-lg">
+                        <span class="text-[10px] uppercase tracking-wide text-brand-neutral-light block mb-0.5">Dispatch Asset</span>
+                        <span class="font-bold text-brand-blue-900">Ford F-550 Flatbed</span>
+                    </div>
+                    <div class="p-3 bg-brand-neutral-bg border border-brand-blue-50/50 rounded-lg">
+                        <span class="text-[10px] uppercase tracking-wide text-brand-neutral-light block mb-0.5">License Fleet Plate</span>
+                        <span class="font-bold text-brand-blue-900">TX-98X-4421</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operational Interface Communication & Action Controls Panel -->
+            <div class="p-6 bg-brand-neutral-bg/60 border-t border-brand-blue-50 flex flex-col gap-3">
+                <button onclick="alert('Connecting encrypted corporate proxy voice link line to operator...')" class="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-brand-blue-500 to-brand-blue-600 text-white font-bold rounded-xl shadow-soft hover:from-brand-blue-600 hover:to-brand-blue-900 transition-all duration-200">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    Establish Voice Link Call
+                </button>
+                <button onclick="confirmCancel()" class="w-full text-center py-3 text-xs font-bold text-rose-600 hover:text-rose-800 hover:bg-rose-50 rounded-xl transition-all duration-200 uppercase tracking-wider">
+                    Cancel Response Request
+                </button>
+            </div>
+        </section>
+
+        <!-- MAP VIEWPORT INTERFACE: DYNAMIC CANVAS (Right Pane) -->
+        <section id="map-container" class="flex-grow h-full bg-brand-blue-50 relative order-1 lg:order-2">
+            <!-- Loading Matrix Shield (Drops out dynamically when leaf map mounts completely) -->
+            <div id="map-loader" class="absolute inset-0 bg-white/80 backdrop-blur-sm z-[1001] flex flex-col items-center justify-center gap-4 transition-opacity duration-500">
+                <div class="w-12 h-12 border-4 border-brand-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                <p class="text-sm font-bold text-brand-blue-900 tracking-wide">Syncing satellite telemetry arrays...</p>
+            </div>
+            <!-- Leaflet Container Node Mount Target -->
+            <div id="map" class="w-full h-full z-0"></div>
+        </section>
+
+    </main>
+
+    <!-- CORE VANILLA TELEMETRY ROUTING ENGINE -->
+    <script>
+        // Coordinates: Austin, Texas Deployment Model (Simulating standard dynamic metrics map)
+        const userLocation = [30.2672, -97.7431];       // Stranded Motorist Position
+        const mechanicStartLocation = [30.2920, -97.7120]; // Dispatched Tow Fleet Initial Position
+        
+        let map, mechanicMarker;
+        let currentStep = 0;
+        const totalSteps = 100;
+        
+        // Path calculation breakdown array
+        const latDelta = (userLocation[0] - mechanicStartLocation[0]) / totalSteps;
+        const lngDelta = (userLocation[1] - mechanicStartLocation[1]) / totalSteps;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Instantiate OpenStreetMap Canvas Render Engine Framework
+            map = L.map('map', {
+                zoomControl: true,
+                attributionControl: false
+            }).setView([30.2800, -97.7280], 13);
+
+            // Inject Custom Trust-Themed Map Layer Graphic Profiles
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                maxZoom: 19
+            }).addTo(map);
+
+            // Pin Client Vehicle Coordinates Anchor
+            const userIcon = L.divIcon({
+                className: 'custom-user-marker',
+                html: `<div class="w-6 h-6 bg-brand-blue-900 border-2 border-white rounded-full flex items-center justify-center shadow-lg shadow-brand-blue-900/30">
+                        <div class="w-2 h-2 bg-white rounded-full animate-ping"></div>
+                       </div>`,
+                iconSize: [24, 24]
+            });
+            L.marker(userLocation, { icon: userIcon }).addTo(map).bindPopup('<b>Your Breakdown Spot</b><br>I-95 South Shoulder.').openPopup();
+
+            // Pin Responding Tow Fleet Fleet Coordinates Engine Anchor
+            const mechanicIcon = L.divIcon({
+                className: 'custom-mechanic-marker',
+                html: `<div class="w-9 h-9 bg-brand-orange-500 text-white rounded-xl flex items-center justify-center shadow-xl shadow-brand-orange-500/40 border-2 border-white">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V7a1 1 0 00-1-1H3V4zM14 7h-2.5v3h3.41l-1-1.5A1 1 0 0014 7z"></path></svg>
+                       </div>`,
+                iconSize: [36, 36]
+            });
+            mechanicMarker = L.marker(mechanicStartLocation, { icon: mechanicIcon }).addTo(map);
+
+            // Draw line connecting coordinates
+            L.polyline([mechanicStartLocation, userLocation], {
+                color: '#0B47A1',
+                weight: 3,
+                dashArray: '8, 8',
+                opacity: 0.6
+            }).addTo(map);
+
+            // Drop map mounting loader frame overlay shield
+            setTimeout(() => {
+                document.getElementById('map-loader').classList.add('opacity-0');
+                setTimeout(() => document.getElementById('map-loader').remove(), 500);
+                // Launch Live Real-Time Coordinate Traversal Telemetry Simulation Loop
+                simulateTelemetryMovement();
+            }, 1000);
+        });
+
+        // Telemetry Movement Traversal Frame Processing Simulation Engine
+        function simulateTelemetryMovement() {
+            const telemetryLoop = setInterval(() => {
+                if (currentStep >= totalSteps) {
+                    clearInterval(telemetryLoop);
+                    document.getElementById('eta-timer').innerText = "Arrived";
+                    document.getElementById('distance-metric').innerText = "0.0 Mi";
+                    document.getElementById('progress-bar').style.width = "100%";
+                    alert("Your responding service asset professional has arrived at your exact targeted location coordinates safely.");
+                    return;
+                }
+
+                currentStep++;
+                
+                // Calculate next mock step traversal path coordinate point parameters
+                const nextLat = mechanicStartLocation[0] + (latDelta * currentStep);
+                const nextLng = mechanicStartLocation[1] + (lngDelta * currentStep);
+                mechanicMarker.setLatLng([nextLat, nextLng]);
+
+                // Update UI progress metrics down dynamically across timeline tracks
+                const percentage = Math.min(35 + ((currentStep / totalSteps) * 65), 100);
+                document.getElementById('progress-bar').style.width = `${percentage}%`;
+
+                const minsLeft = Math.max(12 - Math.floor((currentStep / totalSteps) * 12), 1);
+                document.getElementById('eta-timer').innerText = `${minsLeft} Mins`;
+
+                const milesLeft = Math.max((4.2 - ((currentStep / totalSteps) * 4.2)).toFixed(1), 0.1);
+                document.getElementById('distance-metric').innerText = `${milesLeft} Miles`;
+
+            }, 2500); // Step iteration threshold ticks every 2.5 seconds
+        }
+
+        function confirmCancel() {
+            if (confirm("Are you sure you want to cancel this emergency request? Cancellation fees may apply if the mechanic is close to your location.")) {
+                alert("Assistance request aborted safely. Dispatched assets flagged to return to baseline terminal network nodes.");
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+</body>
+</html>

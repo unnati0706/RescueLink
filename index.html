@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RescueLink | 24/7 Roadside Assistance & Emergency Support</title>
+    <!-- Tailwind CSS Engine CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Customizations & Config -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: {
+                                50: '#F0F5FA',
+                                100: '#DDE7F5',
+                                500: '#0B47A1', // Primary Trust Blue
+                                600: '#0A3F91',
+                                900: '#062352',
+                            },
+                            orange: {
+                                50: '#FFF3EB',
+                                500: '#FF6B00', // Safety Accent Orange
+                                600: '#E66000',
+                            },
+                            neutral: {
+                                dark: '#1E293B',
+                                light: '#64748B',
+                                bg: '#F8FAFC'
+                            }
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(11, 71, 161, 0.05), 0 2px 8px -1px rgba(11, 71, 161, 0.03)',
+                        'glass': '0 8px 32px 0 rgba(11, 71, 161, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-active .faq-answer { max-height: 200px; }
+        .faq-active .faq-icon { transform: rotate(180deg); color: #FF6B00; }
+    </style>
+</head>
+<body class="bg-brand-neutral-bg text-brand-neutral-dark min-h-screen antialiased flex flex-col justify-between selection:bg-brand-orange-500 selection:text-white">
+
+    <!-- 1. STICKY NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 h-20 bg-white/90 backdrop-blur-md border-b border-brand-blue-50/50 shadow-soft z-50">
+        <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            
+            <!-- Brand Identity -->
+            <a href="index.html" class="flex items-center gap-2.5 text-xl font-black text-brand-blue-500 tracking-tight">
+                <div class="p-2 bg-brand-orange-500 rounded-xl text-white shadow-md shadow-brand-orange-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.242.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.772-.568-.372-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                </div>
+                <span>RESCUE<span class="text-brand-orange-500">LINK</span></span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center gap-8">
+            <a href="index.html" class="text-sm font-bold text-brand-orange-500">Home</a>
+             <!-- Point Dashboard to index.html instead of "#" -->
+             <a href="index.html" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Dashboard</a>
+             <!-- Point Nearby Mechanics to track.html or your main map page instead of "#" -->
+             <a href="track.html" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Nearby Mechanics</a>
+             <a href="track.html" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Live Tracking</a>
+             <a href="about.html" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">About</a>
+</div>
+            <!-- Action Controls -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="profile.html" class="text-sm font-bold text-brand-blue-900 hover:text-brand-orange-500 transition-colors">Sign In</a>
+                <a href="contact.html" class="flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-brand-blue-500 to-brand-blue-600 text-white font-medium rounded-xl shadow-soft hover:from-brand-blue-600 hover:to-brand-blue-900 transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95">
+                    <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    Emergency SOS
+                </a>
+            </div>
+
+            <!-- Hamburger Button (Mobile) -->
+            <button id="menu-btn" class="lg:hidden p-2 text-brand-blue-900 hover:text-brand-orange-500 rounded-xl hover:bg-brand-blue-50 transition-colors focus:outline-none">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 right-0 bg-white border-b border-brand-blue-100 shadow-xl px-4 py-6 flex flex-col gap-4 lg:hidden">
+            <a href="#" class="text-sm font-bold text-brand-orange-500">Home</a>
+            <a href="#" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500">Dashboard</a>
+            <a href="#" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500">Nearby Mechanics</a>
+            <a href="#" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500">Live Tracking</a>
+            <a href="#" class="text-sm font-semibold text-brand-blue-900 hover:text-brand-orange-500">About</a>
+            <hr class="border-brand-blue-50">
+            <div class="flex flex-col gap-3">
+                <a href="#" class="text-center py-2 text-sm font-bold text-brand-blue-900">Sign In</a>
+                <a href="#" class="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-blue-500 to-brand-blue-600 text-white font-medium rounded-xl shadow-soft">
+                    Emergency SOS
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT FRAME CONTAINER -->
+    <main class="flex-grow pt-20">
+
+        <!-- 2. HERO SECTION -->
+        <section class="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-12 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 flex flex-col gap-6 text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-orange-50 border border-brand-orange-500/20 text-brand-orange-600 text-xs font-bold tracking-wider uppercase rounded-full w-max">
+                    <span class="w-2 h-2 rounded-full bg-brand-orange-500 animate-ping"></span>
+                    24/7 Nationwide Emergency Grid Active
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-black text-brand-blue-900 tracking-tight leading-[1.1]">
+                    Stranded? Rescue is <span class="text-brand-blue-500 bg-gradient-to-r from-brand-blue-500 to-brand-blue-600 bg-clip-text text-transparent">One Tap</span> Away.
+                </h1>
+                <p class="text-lg text-brand-neutral-light leading-relaxed max-w-xl">
+                    Skip the endless dispatch hold lines. Instantly match with nearby certified mechanics and trace their arrival coordinates in real time.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-2">
+                    <a href="#" class="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-blue-500 to-brand-blue-600 text-white font-bold rounded-xl shadow-xl shadow-brand-blue-500/20 hover:from-brand-blue-600 hover:to-brand-blue-900 transition-all duration-200 transform hover:-translate-y-0.5">
+                        Request Immediate Assistance
+                    </a>
+                    <a href="#" class="flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-blue-500 border border-brand-blue-100 font-bold rounded-xl shadow-soft hover:bg-brand-blue-50 transition-all duration-200 transform hover:-translate-y-0.5">
+                        View Local Providers
+                    </a>
+                </div>
+            </div>
+
+            <!-- UI Interactive Illustration Space -->
+            <div class="lg:col-span-5 relative w-full aspect-square max-w-[480px] lg:max-w-none mx-auto">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand-blue-100/40 to-brand-orange-50/50 rounded-3xl -rotate-2 scale-98"></div>
+                <div class="absolute inset-0 bg-white border border-brand-blue-100/60 shadow-glass rounded-3xl p-8 flex flex-col justify-between overflow-hidden">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-3 items-center">
+                            <div class="w-12 h-12 rounded-xl bg-brand-blue-50 flex items-center justify-center text-brand-blue-500 font-black text-xl">R</div>
+                            <div>
+                                <h4 class="font-bold text-brand-blue-900 text-sm">Emergency Dispatch Matrix</h4>
+                                <p class="text-xs text-brand-neutral-light">Locating active route responders...</p>
+                            </div>
+                        </div>
+                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase rounded-md tracking-wider">GPS Connected</span>
+                    </div>
+                    
+                    <!-- SVG Grid Dynamic Map Mock -->
+                    <div class="my-6 flex-grow rounded-2xl bg-gradient-to-br from-brand-blue-50 to-brand-neutral-bg border border-brand-blue-100/50 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute top-1/3 left-1/4 w-3 h-3 bg-brand-blue-500 rounded-full ring-4 ring-brand-blue-500/20 animate-pulse"></div>
+                        <div class="absolute bottom-1/3 right-1/3 w-3 h-3 bg-brand-orange-500 rounded-full ring-4 ring-brand-orange-500/20"></div>
+                        <svg class="w-full h-full stroke-brand-blue-100 stroke-[1.5] fill-none animate-pulse-subtle" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M -20,40 L 500,120 M 100,-20 L 160,500 M -40,300 L 600,180" />
+                        </svg>
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-brand-blue-100 text-[11px] font-bold text-brand-blue-900 shadow-sm">
+                            ETA: 12.4 Mins
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-brand-neutral-light border-t border-brand-blue-50 pt-4 flex justify-between items-center">
+                        <span>Client: Stranded on Interstate-95</span>
+                        <span class="font-semibold text-brand-blue-900">ID: #4092-SOS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. STATISTICS SECTION -->
+        <section class="bg-brand-blue-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-brand-blue-600/30">
+                <div class="pt-0">
+                    <div class="text-3xl sm:text-4xl font-black text-brand-orange-500 tracking-tight mb-1">15 Mins</div>
+                    <div class="text-sm text-brand-blue-100 font-medium tracking-wide">Average Arrival Response</div>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <div class="text-3xl sm:text-4xl font-black text-brand-orange-500 tracking-tight mb-1">15,000+</div>
+                    <div class="text-sm text-brand-blue-100 font-medium tracking-wide">Breakdowns Dispatched</div>
+                </div>
+                <div class="pt-6 md:pt-0">
+                    <div class="text-3xl sm:text-4xl font-black text-brand-orange-500 tracking-tight mb-1">99.4%</div>
+                    <div class="text-sm text-brand-blue-100 font-medium tracking-wide">Customer Satisfaction Score</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FEATURES SECTION -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-xl mx-auto mb-16 flex flex-col gap-3">
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-blue-900 tracking-tight">Built for Speed and Reliability</h2>
+                <p class="text-base text-brand-neutral-light">We redesigned the roadside assistance workflow to eliminate long wait times when you need help most.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-blue-50 shadow-soft hover:shadow-md transition-all duration-200 flex flex-col gap-4 group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue-50 flex items-center justify-center text-brand-blue-500 group-hover:bg-brand-orange-500 group-hover:text-white transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-blue-900 tracking-tight">Precision Geo-Tracking</h3>
+                    <p class="text-sm text-brand-neutral-light leading-relaxed">Our real-time platform accurately tracks your breakdown location down to the exact shoulder coordinate.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-blue-50 shadow-soft hover:shadow-md transition-all duration-200 flex flex-col gap-4 group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue-50 flex items-center justify-center text-brand-blue-500 group-hover:bg-brand-orange-500 group-hover:text-white transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-blue-900 tracking-tight">Smart Dispatch Engine</h3>
+                    <p class="text-sm text-brand-neutral-light leading-relaxed">Instantly alerts the closest specialized service provider to reduce waiting times.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-brand-blue-50 shadow-soft hover:shadow-md transition-all duration-200 flex flex-col gap-4 group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue-50 flex items-center justify-center text-brand-blue-500 group-hover:bg-brand-orange-500 group-hover:text-white transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-blue-900 tracking-tight">Vetted Mechanical Fleet</h3>
+                    <p class="text-sm text-brand-neutral-light leading-relaxed">Every responding technician is fully credentialed, background-checked, and highly rated.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. HOW IT WORKS SECTION -->
+        <section class="bg-white py-20 px-4 sm:px-6 lg:px-8 border-y border-brand-blue-50">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-xl mx-auto mb-16 flex flex-col gap-3">
+                    <h2 class="text-3xl sm:text-4xl font-black text-brand-blue-900 tracking-tight">3 Steps to Resolution</h2>
+                    <p class="text-base text-brand-neutral-light">No membership contracts or monthly premiums required. Pay only for the specific rescue services you need.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                    <div class="relative flex flex-col gap-4">
+                        <div class="text-6xl font-black text-brand-blue-100 tracking-tighter leading-none mb-2">01</div>
+                        <h3 class="text-lg font-bold text-brand-blue-900 tracking-tight">Broadcast Location</h3>
+                        <p class="text-sm text-brand-neutral-light leading-relaxed">Tap Emergency SOS. Our system automatically pinpoints your coordinates.</p>
+                    </div>
+                    <div class="relative flex flex-col gap-4">
+                        <div class="text-6xl font-black text-brand-blue-100 tracking-tighter leading-none mb-2">02</div>
+                        <h3 class="text-lg font-bold text-brand-blue-900 tracking-tight">Specify System Failure</h3>
+                        <p class="text-sm text-brand-neutral-light leading-relaxed">Select your issue (e.g., flat tire, dead battery, engine smoke) for targeted truck matching.</p>
+                    </div>
+                    <div class="relative flex flex-col gap-4">
+                        <div class="text-6xl font-black text-brand-blue-100 tracking-tighter leading-none mb-2">03</div>
+                        <h3 class="text-lg font-bold text-brand-blue-900 tracking-tight">Track Rescue Fleet</h3>
+                        <p class="text-sm text-brand-neutral-light leading-relaxed">Monitor your mechanic arriving live on the map with step-by-step updates.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. TESTIMONIALS SECTION -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-blue-900 tracking-tight mb-3">Real Drivers, Real Relief</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl border border-brand-blue-50 shadow-soft flex flex-col justify-between gap-6 relative">
+                    <p class="text-base text-brand-neutral-dark italic leading-relaxed">"Stranded at 2 AM with a shredded tire. RescueLink paired me with a flatbed within 3 minutes. Incredible response."</p>
+                    <div>
+                        <h4 class="font-bold text-brand-blue-900 text-sm">Sarah Jenkins</h4>
+                        <p class="text-xs text-brand-orange-500 font-semibold mt-0.5">Verified Client · SUV Driver</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-brand-blue-50 shadow-soft flex flex-col justify-between gap-6 relative">
+                    <p class="text-base text-brand-neutral-dark italic leading-relaxed">"The interface eliminates the guesswork. Seeing exactly where the tow truck is on the map kept me calm."</p>
+                    <div>
+                        <h4 class="font-bold text-brand-blue-900 text-sm">Marcus Vance</h4>
+                        <p class="text-xs text-brand-orange-500 font-semibold mt-0.5">Verified Client · EV Driver</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. FAQ ACCORDION SECTION -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto border-t border-brand-blue-50/60">
+            <h2 class="text-3xl font-black text-brand-blue-900 tracking-tight text-center mb-12">Frequently Asked Questions</h2>
+            <div class="flex flex-col gap-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-white rounded-xl border border-brand-blue-50 overflow-hidden shadow-soft transition-all">
+                    <button class="faq-toggle w-full px-6 py-4 flex justify-between items-center text-left text-brand-blue-900 font-bold hover:bg-brand-blue-50/50 transition-colors focus:outline-none">
+                        <span>How is billing handled for on-demand rescues?</span>
+                        <svg class="faq-icon w-5 h-5 text-brand-neutral-light transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-5 pt-1 text-sm text-brand-neutral-light leading-relaxed border-t border-brand-blue-50/30">
+                            Pricing is calculated transparently upfront based on your vehicle profile and the type of assistance requested. You approve costs directly within the interface before dispatch.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-white rounded-xl border border-brand-blue-50 overflow-hidden shadow-soft transition-all">
+                    <button class="faq-toggle w-full px-6 py-4 flex justify-between items-center text-left text-brand-blue-900 font-bold hover:bg-brand-blue-50/50 transition-colors focus:outline-none">
+                        <span>What if I don't know my exact cross streets?</span>
+                        <svg class="faq-icon w-5 h-5 text-brand-neutral-light transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-5 pt-1 text-sm text-brand-neutral-light leading-relaxed border-t border-brand-blue-50/30">
+                            The application uses native device telemetry to pull high-precision location coordinates, eliminating the need to look manually for physical street markers.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 8. FOOTER -->
+    <footer class="bg-brand-blue-900 text-white border-t border-brand-blue-600/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
+            <div class="flex flex-col gap-4">
+                <a href="#" class="flex items-center gap-2 text-xl font-black tracking-tight text-white">
+                    <div class="p-1.5 bg-brand-orange-500 rounded-lg text-white">
+                        <svg class="w-4 h-4 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.242.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.772-.568-.372-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    </div>
+                    <span>RESCUE<span class="text-brand-orange-500">LINK</span></span>
+                </a>
+                <p class="text-sm text-brand-blue-100 leading-relaxed">
+                    Real-time, geo-targeted roadside response dispatch infrastructure networks nationwide.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-brand-orange-500 mb-4">Core Platform</h4>
+                <div class="flex flex-col gap-2.5 text-sm text-brand-blue-100">
+                    <a href="#" class="hover:text-white transition-colors">Request Dispatch</a>
+                    <a href="#" class="hover:text-white transition-colors">Emergency Network</a>
+                    <a href="#" class="hover:text-white transition-colors">Telemetry Tracking</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-brand-orange-500 mb-4">Company</h4>
+                <div class="flex flex-col gap-2.5 text-sm text-brand-blue-100">
+                    <a href="#" class="hover:text-white transition-colors">About Mission</a>
+                    <a href="#" class="hover:text-white transition-colors">Contact Support</a>
+                    <a href="#" class="hover:text-white transition-colors">Provider Portal</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-wider text-brand-orange-500 mb-4">Support Direct</h4>
+                <p class="text-sm text-brand-blue-100 mb-1">Corporate Dispatch HQ:</p>
+                <p class="text-lg font-black text-white tracking-wide">1-800-555-RESCUE</p>
+                <p class="text-xs text-brand-blue-100/70 mt-2">Operational 24/7/365</p>
+            </div>
+        </div>
+        <div class="border-t border-brand-blue-600/20 py-6 text-center text-xs text-brand-blue-100/60">
+            &copy; 2026 RescueLink Technologies Inc. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- 9. VANILLA JAVASCRIPT SYSTEM ENGINE -->
+    <script>
+        // Interactive Mobile Navbar Drawer Controller
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Accordion Engine For FAQ Component
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('faq-active');
+                
+                // Collapse all active states down cleanly first
+                document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('faq-active'));
+                
+                // Toggle clicked element
+                if (!isActive) {
+                    item.classList.add('faq-active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

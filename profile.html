@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RescueLink | Profile Settings</title>
+    <!-- Tailwind CSS Engine CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Customizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            blue: {
+                                50: '#F0F5FA',
+                                100: '#DDE7F5',
+                                500: '#0B47A1', // Primary Trust Blue
+                                600: '#0A3F91',
+                                900: '#062352',
+                            },
+                            orange: {
+                                50: '#FFF3EB',
+                                500: '#FF6B00', // Safety Accent Orange
+                                600: '#E66000',
+                            },
+                            neutral: {
+                                dark: '#1E293B',
+                                light: '#64748B',
+                                bg: '#F8FAFC'
+                            }
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(11, 71, 161, 0.05), 0 2px 8px -1px rgba(11, 71, 161, 0.03)',
+                        'card': '0 10px 30px -5px rgba(11, 71, 161, 0.04), 0 4px 12px -2px rgba(11, 71, 161, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-neutral-bg text-brand-neutral-dark min-h-screen antialiased pt-24 pb-12">
+
+    <!-- STICKY NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 h-20 bg-white/90 backdrop-blur-md border-b border-brand-blue-50/50 shadow-soft z-50">
+        <div class="max-w-5xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2.5 text-xl font-black text-brand-blue-500 tracking-tight">
+                <div class="p-2 bg-brand-orange-500 rounded-xl text-white shadow-md flex items-center justify-center">
+                    <svg class="w-5 h-5 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.242.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.772-.568-.372-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                </div>
+                <span>RESCUE<span class="text-brand-orange-500">LINK</span></span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold text-brand-neutral-light hover:text-brand-blue-500 transition-colors">Home</a>
+                <a href="history.html" class="text-xs font-bold text-brand-neutral-light hover:text-brand-blue-500 transition-colors">Payment History</a>
+                <a href="track.html" class="text-xs font-bold text-white bg-brand-blue-500 hover:bg-brand-blue-600 px-3.5 py-2 rounded-xl shadow-soft transition-colors">Active Tracker</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN TWO-COLUMN GRID -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- LEFT PANEL: USER CARD & CORE INFO (5 Columns) -->
+        <section class="lg:col-span-5 space-y-6">
+            
+            <!-- USER METADATA CARD -->
+            <div class="bg-white p-6 rounded-3xl border border-brand-blue-50 shadow-card text-center relative overflow-hidden">
+                <div class="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-brand-blue-500 to-brand-blue-900"></div>
+                
+                <div class="relative pt-6">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-brand-orange-50 border-4 border-white shadow-md flex items-center justify-center text-3xl font-black text-brand-blue-900 mb-3">
+                        PC
+                    </div>
+                    <h2 class="text-xl font-black text-brand-blue-900 tracking-tight">Priya Chauhan</h2>
+                    <p class="text-xs text-brand-neutral-light font-bold uppercase tracking-wider mt-0.5">Premium Member</p>
+                    
+                    <div class="mt-4 pt-4 border-t border-brand-blue-50/70 grid grid-cols-2 gap-2 text-left text-xs font-medium text-brand-neutral-light">
+                        <div>
+                            <span class="block text-[10px] uppercase font-bold tracking-wider text-brand-blue-900/40">Account Class</span>
+                            <span class="text-brand-neutral-dark font-bold">Individual Elite</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] uppercase font-bold tracking-wider text-brand-blue-900/40">Member Since</span>
+                            <span class="text-brand-neutral-dark font-bold">January 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REGISTERED VEHICLES CONTAINER -->
+            <div class="bg-white p-6 rounded-3xl border border-brand-blue-50 shadow-card">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-brand-neutral-light">My Vehicles</h3>
+                    <button onclick="addVehicleMock()" class="text-xs font-bold text-brand-orange-500 hover:text-brand-orange-600 transition-colors">+ Add New</button>
+                </div>
+
+                <div class="space-y-3">
+                    <!-- VEHICLE 1 -->
+                    <div class="p-3.5 bg-brand-blue-50/50 rounded-2xl border border-brand-blue-50 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-white rounded-xl shadow-sm text-brand-blue-500">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-brand-blue-900">Maruti Suzuki Swift</h4>
+                                <p class="text-[11px] font-semibold text-brand-neutral-light uppercase tracking-wider">GJ-07-XX-1234</p>
+                            </div>
+                        </div>
+                        <span class="bg-brand-blue-500 text-[10px] text-white font-extrabold uppercase px-2 py-0.5 rounded shadow-sm">Default</span>
+                    </div>
+
+                    <!-- VEHICLE 2 -->
+                    <div class="p-3.5 bg-white rounded-2xl border border-dashed border-brand-blue-100 flex items-center justify-between opacity-80 hover:opacity-100 transition-opacity">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-brand-blue-50 rounded-xl text-brand-neutral-light">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4a4 4 0 100 8 4 4 0 000-8zM2 20a10 10 0 0120 0H2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-brand-blue-900">Yamaha FZ (Guitar Commuter)</h4>
+                                <p class="text-[11px] font-semibold text-brand-neutral-light uppercase tracking-wider">GJ-07-XX-5678</p>
+                            </div>
+                        </div>
+                        <button class="text-[10px] font-bold text-brand-neutral-light hover:text-brand-blue-500">Set Primary</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RIGHT PANEL: ACCOUNT SETTINGS FORM (7 Columns) -->
+        <section class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-brand-blue-50 shadow-card">
+            <h1 class="text-2xl font-black text-brand-blue-900 tracking-tight mb-2">Account Parameters</h1>
+            <p class="text-xs text-brand-neutral-light font-medium mb-6">Modify details regarding secure authentication profiles and dispatch coordination links.</p>
+
+            <form onsubmit="saveProfileMock(event)" class="space-y-5">
+                <!-- CORE SETTINGS -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Full Legal Name</label>
+                        <input type="text"  placeholder="Raj Singh" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Contact Phone Number</label>
+                        <input type="tel"  placeholder="924XXXXXXX" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Registered Email Vault</label>
+                    <input type="email" placeholder="abc@gmail.com" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium">
+                </div>
+
+                <hr class="border-brand-blue-50 my-6" />
+
+                <!-- EMERGENCY CONTACT SUB-ARRAY -->
+                <div>
+                    <h3 class="text-xs font-black uppercase tracking-widest text-brand-neutral-light mb-3">SOS Fast-Alert Contact</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-brand-blue-900/70 uppercase tracking-wider mb-1.5">Kin Relation Name</label>
+                            <input type="text" placeholder="Guardian or Kin Name" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-brand-blue-900/70 uppercase tracking-wider mb-1.5">Kin Emergency Phone</label>
+                            <input type="tel" placeholder="SOS Contact Number" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium">
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-brand-neutral-light mt-2">When explicit collision sensors or high-grade panic switches drop via terminal modules, this link receives live-tracking spatial coordinates immediately.</p>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="pt-4 flex justify-end">
+                    <button type="submit" class="px-6 py-3.5 bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold rounded-xl shadow-soft transition-all text-sm uppercase tracking-wider">
+                        Update System Configuration
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- CLIENT SCRIPT EXECUTION SIMULATION -->
+    <script>
+        function saveProfileMock(event) {
+            event.preventDefault();
+            alert("System Updates Commited: Secure architecture data states synchronized across remote core network clusters successfully.");
+        }
+
+        function addVehicleMock() {
+            let makeModel = prompt("Enter Vehicle Make and Model (e.g., Hyundai i20):");
+            let plateNum = prompt("Enter Vehicle Registration Plate Number:");
+            if (makeModel && plateNum) {
+                alert(`Vehicle profile template allocated inside memory pipeline for processing:\n${makeModel} [${plateNum.toUpperCase()}]`);
+            }
+        }
+    </script>
+</body>
+</html>

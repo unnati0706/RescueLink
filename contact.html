@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RescueLink | Contact & Dispatch Support</title>
+    <!-- Tailwind CSS Engine CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Customizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            blue: {
+                                50: '#F0F5FA',
+                                100: '#DDE7F5',
+                                500: '#0B47A1', // Primary Trust Blue
+                                600: '#0A3F91',
+                                900: '#062352',
+                            },
+                            orange: {
+                                50: '#FFF3EB',
+                                500: '#FF6B00', // Safety Accent Orange
+                                600: '#E66000',
+                            },
+                            neutral: {
+                                dark: '#1E293B',
+                                light: '#64748B',
+                                bg: '#F8FAFC'
+                            }
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(11, 71, 161, 0.05), 0 2px 8px -1px rgba(11, 71, 161, 0.03)',
+                        'card': '0 10px 30px -5px rgba(11, 71, 161, 0.04), 0 4px 12px -2px rgba(11, 71, 161, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-neutral-bg text-brand-neutral-dark min-h-screen antialiased pt-24 pb-12">
+
+    <!-- STICKY NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 h-20 bg-white/90 backdrop-blur-md border-b border-brand-blue-50/50 shadow-soft z-50">
+        <div class="max-w-5xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2.5 text-xl font-black text-brand-blue-500 tracking-tight">
+                <div class="p-2 bg-brand-orange-500 rounded-xl text-white shadow-md flex items-center justify-center">
+                    <svg class="w-5 h-5 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.242.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.772-.568-.372-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                </div>
+                <span>RESCUE<span class="text-brand-orange-500">LINK</span></span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="about.html" class="text-xs font-bold text-brand-neutral-light hover:text-brand-blue-500 transition-colors">About Mission</a>
+                <a href="index.html" class="text-xs font-bold text-white bg-brand-blue-500 hover:bg-brand-blue-600 px-4 py-2 rounded-xl shadow-soft transition-colors">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT PACK MATRIX -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- LEFT COL: SYSTEM NODES & FAST CHANNELS (5 Columns) -->
+        <section class="lg:col-span-5 space-y-4">
+            <div class="bg-gradient-to-br from-brand-blue-900 to-brand-blue-950 p-6 rounded-3xl text-white shadow-card relative overflow-hidden">
+                <span class="text-[10px] font-black tracking-widest text-brand-orange-500 uppercase">24/7 Operations</span>
+                <h2 class="text-xl font-black tracking-tight mt-1 mb-2">Emergency Dispatch Control</h2>
+                <p class="text-xs text-brand-blue-100/80 leading-relaxed mb-4">If you are currently stranded on an open highway or need immediate mechanical fleet assignment, skip forms and request a live link directly.</p>
+                
+                <div class="space-y-3 pt-2">
+                    <a href="tel:18005557372" class="flex items-center gap-3 p-3 bg-white/10 rounded-xl hover:bg-white/15 transition-all group">
+                        <div class="p-2 bg-brand-orange-500 rounded-lg text-white">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] text-white/50 uppercase font-bold tracking-wider">Toll-Free SOS Hotline</span>
+                            <span class="text-xs font-bold text-white group-hover:text-brand-orange-500 transition-colors">1800-555-RESCUE</span>
+                        </div>
+                    </a>
+
+                    <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                        <div class="p-2 bg-brand-blue-500 rounded-lg text-white">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L22 8m-9 3.5V21n0-3.5L22 8H2"></path></svg>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] text-white/40 uppercase font-bold tracking-wider">Corporate Hub Mail</span>
+                            <span class="text-xs font-bold text-white">ops@rescuelink.org.in</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GEOGRAPHIC COORDINATES BLOCK -->
+            <div class="bg-white p-5 rounded-3xl border border-brand-blue-50 shadow-card">
+                <h3 class="text-xs font-black uppercase tracking-widest text-brand-neutral-light mb-3">Regional Command Center</h3>
+                <div class="text-xs font-semibold text-brand-neutral-dark space-y-1">
+                    <p class="font-black text-brand-blue-900">RescueLink India Support Hub</p>
+                    <p class="text-brand-neutral-light font-medium">Gujarat Technological Incubation Corridor,</p>
+                    <p class="text-brand-neutral-light font-medium">Anand - Vidyanagar Highway,</p>
+                    <p class="text-brand-neutral-light font-medium">Gujarat, India.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-brand-blue-50 text-[11px] text-brand-neutral-light font-medium flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Digital dispatch server pipelines operational.
+                </div>
+            </div>
+        </section>
+
+        <!-- RIGHT COL: SUPPORT INTERFACE FORM (7 Columns) -->
+        <section class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-brand-blue-50 shadow-card">
+            <h1 class="text-2xl font-black text-brand-blue-900 tracking-tight mb-1">Inquiry Pipeline</h1>
+            <p class="text-xs text-brand-neutral-light font-medium mb-6">Have bulk fleet suggestions, account bugs, or partnership queries? Drop a message straight into our support queue.</p>
+
+            <form onsubmit="fireMessageMock(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Your Name</label>
+                        <input type="text" id="contactName" required placeholder="Priya Chauhan" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Email Address</label>
+                        <input type="email" id="contactEmail" required placeholder="name@example.com" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Query Category</label>
+                    <select id="contactCategory" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium appearance-none">
+                        <option value="fleet">Fleet Partner Onboarding</option>
+                        <option value="account">Account & Corporate Billing</option>
+                        <option value="technical">Technical Bug Report</option>
+                        <option value="other">General Feedback</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Elaborate Message</label>
+                    <textarea id="contactMessage" required rows="4" placeholder="Describe your requirement clearly..." class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium resize-none"></textarea>
+                </div>
+
+                <div class="pt-2 flex justify-end">
+                    <button type="submit" class="w-full sm:w-auto px-6 py-3.5 bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold rounded-xl shadow-soft transition-all text-xs uppercase tracking-wider">
+                        Transmit Ticket
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- CLIENT CONTROLLER IMPLEMENTATION -->
+    <script>
+        function fireMessageMock(event) {
+            event.preventDefault();
+            const category = document.getElementById('contactCategory').value;
+            alert(`Ticket Dispatched! Your query under [${category.toUpperCase()}] has been indexed. Support staff will respond within 4 business hours.`);
+            document.getElementById('contactMessage').value = '';
+        }
+    </script>
+</body>
+</html>

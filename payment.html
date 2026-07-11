@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RescueLink | Secure Dispatch Payment Gateway</title>
+    <!-- Tailwind CSS Engine CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Customizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            blue: {
+                                50: '#F0F5FA',
+                                100: '#DDE7F5',
+                                500: '#0B47A1', // Primary Trust Blue
+                                600: '#0A3F91',
+                                900: '#062352',
+                            },
+                            orange: {
+                                50: '#FFF3EB',
+                                500: '#FF6B00', // Safety Accent Orange
+                                600: '#E66000',
+                            },
+                            neutral: {
+                                dark: '#1E293B',
+                                light: '#64748B',
+                                bg: '#F8FAFC'
+                            }
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(11, 71, 161, 0.05), 0 2px 8px -1px rgba(11, 71, 161, 0.03)',
+                        'card': '0 10px 30px -5px rgba(11, 71, 161, 0.04), 0 4px 12px -2px rgba(11, 71, 161, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-neutral-bg text-brand-neutral-dark min-h-screen antialiased pt-24 pb-12">
+
+    <!-- STICKY NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 h-20 bg-white/90 backdrop-blur-md border-b border-brand-blue-50/50 shadow-soft z-50">
+        <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2.5 text-xl font-black text-brand-blue-500 tracking-tight">
+                <div class="p-2 bg-brand-orange-500 rounded-xl text-white shadow-md flex items-center justify-center">
+                    <svg class="w-5 h-5 transform -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.242.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.772-.568-.372-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                </div>
+                <span>RESCUE<span class="text-brand-orange-500">LINK</span></span>
+            </a>
+            <div class="flex items-center gap-2 text-xs font-bold text-brand-neutral-light bg-brand-blue-50 px-3 py-1.5 rounded-full border border-brand-blue-100">
+                <svg class="w-3.5 h-3.5 text-brand-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                Secure Connection Verified
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN GRID CONTAINER -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- LEFT COLUMN: PAYMENT METHOD INLINE SELECTION -->
+        <section class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-brand-blue-50 shadow-card">
+            <h1 class="text-2xl font-black text-brand-blue-900 tracking-tight mb-2">Select Payment Method</h1>
+            <p class="text-xs text-brand-neutral-light font-medium mb-6">Choose a secure channel to process settlement for your roadside assistance ticket.</p>
+
+            <!-- METHOD SELECTOR PILLS -->
+            <div class="grid grid-cols-3 gap-3 mb-8">
+                <button type="button" onclick="switchPaymentTab('upi')" id="tab-upi" class="payment-tab-btn py-3.5 rounded-xl text-xs font-bold border flex flex-col items-center justify-center gap-1.5 transition-all bg-brand-blue-900 text-white border-brand-blue-900">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    UPI Gateway
+                </button>
+                <button type="button" onclick="switchPaymentTab('card')" id="tab-card" class="payment-tab-btn py-3.5 rounded-xl text-xs font-bold border flex flex-col items-center justify-center gap-1.5 transition-all bg-white text-brand-blue-900 border-brand-blue-100 hover:bg-brand-blue-50">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    Credit / Debit
+                </button>
+                <button type="button" onclick="switchPaymentTab('wallet')" id="tab-wallet" class="payment-tab-btn py-3.5 rounded-xl text-xs font-bold border flex flex-col items-center justify-center gap-1.5 transition-all bg-white text-brand-blue-900 border-brand-blue-100 hover:bg-brand-blue-50">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    Wallets / Apps
+                </button>
+            </div>
+
+            <!-- TAB CONTAINER 1: UPI SELECTION (Default Primary in India) -->
+            <form id="form-upi" onsubmit="executePaymentPipeline(event)" class="payment-form-view space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Enter UPI ID / VPA</label>
+                    <div class="relative">
+                        <input type="text" required placeholder="username@okhdfcbank" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium lowercase">
+                    </div>
+                    <p class="text-[11px] text-brand-neutral-light mt-1.5">A collect request notification will be pushed to your selected UPI mobile app instantly.</p>
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-4 bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold rounded-xl shadow-soft transition-all text-sm">
+                        Verify & Pay Securely
+                    </button>
+                </div>
+            </form>
+
+            <!-- TAB CONTAINER 2: CREDIT CARD CONTEXT (Hidden Initially) -->
+            <form id="form-card" onsubmit="executePaymentPipeline(event)" class="payment-form-view space-y-4 hidden">
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Cardholder Name</label>
+                    <input type="text" placeholder="Priya Chauhan" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Card Number</label>
+                    <div class="relative">
+                        <input type="text" maxlength="19" placeholder="4532 •••• •••• 8824" oninput="formatCardNumber(this)" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium tracking-wide">
+                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-brand-neutral-light tracking-widest">VISA / RUPAY</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Expiry Date</label>
+                        <input type="text" maxlength="5" placeholder="MM/YY" oninput="formatExpiry(this)" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium text-center">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-brand-blue-900 uppercase tracking-wider mb-1.5">Security CVV</label>
+                        <input type="password" maxlength="3" placeholder="•••" class="w-full bg-brand-neutral-bg border border-brand-blue-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-blue-500 font-medium text-center tracking-widest">
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-4 bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold rounded-xl shadow-soft transition-all text-sm">
+                        Authorize Payment Gateway
+                    </button>
+                </div>
+            </form>
+
+            <!-- TAB CONTAINER 3: WALLETS (Hidden Initially) -->
+            <div id="form-wallet" class="payment-form-view space-y-3 hidden">
+                <button onclick="mockWalletPay('Paytm Wallet')" class="w-full py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl text-sm flex items-center justify-center gap-2 transition-all">
+                    Pay via Paytm Wallet
+                </button>
+                <button onclick="mockWalletPay('PhonePe')" class="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl text-sm flex items-center justify-center gap-2 transition-all">
+                    Pay via PhonePe Container
+                </button>
+                <button onclick="mockWalletPay('Amazon Pay')" class="w-full py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-sm flex items-center justify-center gap-1 transition-all">
+                    Pay via Amazon Pay
+                </button>
+            </div>
+        </section>
+
+        <!-- RIGHT COLUMN: DESCRIPTIVE FEE SUMMARY ROW SUMMARY -->
+        <section class="lg:col-span-5 space-y-6">
+            
+            <!-- SERVICE BREAKDOWN CARD -->
+            <div class="bg-white p-6 rounded-3xl border border-brand-blue-50 shadow-card">
+                <h3 class="text-xs font-black uppercase tracking-widest text-brand-neutral-light mb-4">Assistance Bill Summary</h3>
+                
+                <div class="space-y-3 text-sm font-medium text-brand-neutral-dark/90">
+                    <div class="flex justify-between">
+                        <span class="text-brand-neutral-light">Flatbed Flat Base Rate</span>
+                        <span>₹1,500.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-brand-neutral-light">Distance Traversal (12 Km)</span>
+                        <span>₹360.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-brand-neutral-light">Emergency Dispatch Premium</span>
+                        <span>₹250.00</span>
+                    </div>
+                    <div class="flex justify-between border-b border-brand-blue-50 pb-3">
+                        <span class="text-brand-neutral-light">CGST / SGST (18%)</span>
+                        <span>₹379.80</span>
+                    </div>
+                    <div class="flex justify-between items-baseline pt-2 text-brand-blue-900">
+                        <span class="text-base font-black">Total Amount Due</span>
+                        <span class="text-2xl font-black tracking-tight text-brand-orange-500">₹2,489.80</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ASSIGNED DISPATCH METADATA ASSET CARD -->
+            <div class="bg-gradient-to-br from-brand-blue-900 to-brand-blue-950 p-6 rounded-3xl text-white shadow-xl relative overflow-hidden">
+                <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-4 translate-y-4 scale-150">
+                    <svg class="w-32 h-32 fill-current" viewBox="0 0 20 20"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V7a1 1 0 00-1-1H3V4zM14 7h-2.5v3h3.41l-1-1.5A1 1 0 0014 7z"></path></svg>
+                </div>
+                <span class="inline-block bg-brand-orange-500 text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded mb-3">Active Case Logged</span>
+                <h4 class="text-base font-bold text-white mb-1">Ticket #9042-SOS</h4>
+                <p class="text-xs text-brand-blue-100/80 font-medium leading-relaxed mb-4">Assigned Professional Operator is holding current dispatch terminal protocols pending final clearance transaction settlement verification.</p>
+                
+                <div class="text-[11px] font-bold text-brand-blue-100/60 uppercase tracking-wider pt-3 border-t border-brand-blue-50/20 flex justify-between">
+                    <span>Incident Node: NH-8 Highway</span>
+                    <span>Anand, GJ</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PROCESSING SHIELD OVERLAY -->
+    <div id="payment-gate-shield" class="fixed inset-0 bg-brand-blue-900/95 backdrop-blur-md z-[2000] hidden flex-col items-center justify-center text-center p-4">
+        <div class="w-16 h-16 border-4 border-brand-orange-500 border-t-transparent rounded-full animate-spin mb-6"></div>
+        <h2 class="text-2xl font-black text-white tracking-tight mb-2">Processing Escrow Network Settlement</h2>
+        <p class="text-sm font-semibold text-brand-blue-100 max-w-sm leading-relaxed">Communicating with secure banking vault frameworks. Do not close or refresh this page.</p>
+    </div>
+
+    <!-- SCRIPT INTERACTION SYSTEM -->
+    <script>
+        function switchPaymentTab(targetTabId) {
+            const tabButtons = document.querySelectorAll('.payment-tab-btn');
+            tabButtons.forEach(btn => {
+                btn.classList.remove('bg-brand-blue-900', 'text-white', 'border-brand-blue-900');
+                btn.classList.add('bg-white', 'text-brand-blue-900', 'border-brand-blue-100', 'hover:bg-brand-blue-50');
+            });
+
+            const targetedBtn = document.getElementById(`tab-${targetTabId}`);
+            targetedBtn.classList.remove('bg-white', 'text-brand-blue-900', 'border-brand-blue-100', 'hover:bg-brand-blue-50');
+            targetedBtn.classList.add('bg-brand-blue-900', 'text-white', 'border-brand-blue-900');
+
+            const formViews = document.querySelectorAll('.payment-form-view');
+            formViews.forEach(view => view.classList.add('hidden'));
+            document.getElementById(`form-${targetTabId}`).classList.remove('hidden');
+        }
+
+        function formatCardNumber(input) {
+            let v = input.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let matches = v.match(/\d{4,16}/g);
+            let match = matches && matches[0] || '';
+            let parts = [];
+            for (let i=0, len=match.length; i<len; i+=4) {
+                parts.push(match.substring(i, i+4));
+            }
+            input.value = parts.length > 0 ? parts.join(' ') : v;
+        }
+
+        function formatExpiry(input) {
+            let v = input.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            if (v.length >= 2) {
+                input.value = v.substring(0, 2) + '/' + v.substring(2, 4);
+            } else {
+                input.value = v;
+            }
+        }
+
+        function executePaymentPipeline(event) {
+            event.preventDefault();
+            triggerOverlaySequence();
+        }
+
+        function mockWalletPay(walletName) {
+            if(confirm(`Confirm routing transaction clearance validation using external ${walletName} wallet handles?`)) {
+                triggerOverlaySequence();
+            }
+        }
+
+        function triggerOverlaySequence() {
+            const shield = document.getElementById('payment-gate-shield');
+            shield.classList.remove('hidden');
+            shield.classList.add('flex');
+
+            // Simulate transition to the tracking window page after 3 seconds
+            setTimeout(() => {
+                shield.innerHTML = `
+                    <div class="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center font-black text-2xl shadow-xl shadow-emerald-500/20 mb-6 animate-bounce">✓</div>
+                    <h2 class="text-2xl font-black text-white tracking-tight mb-2">Transaction Cleared Safely</h2>
+                    <p class="text-sm font-semibold text-brand-blue-100 max-w-sm leading-relaxed mb-6">Your payment has been successfully recorded. Route tracking metrics are live.</p>
+                    <button onclick="window.location.href='track.html'" class="px-6 py-3 bg-brand-orange-500 hover:bg-brand-orange-600 text-white font-bold rounded-xl transition-all shadow-md text-xs uppercase tracking-wider">Track Driver Location</button>
+                `;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
