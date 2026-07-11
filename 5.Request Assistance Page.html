@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Assistance | Roadside Rescue</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1E3A8A',
+              lightBlue: '#3B82F6',
+              orange: '#F97316',
+              darkOrange: '#EA580C',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-800 selection:bg-brand-orange selection:text-white relative">
+
+  <!-- Top Gradient Accent Bar -->
+  <div class="h-1.5 w-full bg-gradient-to-r from-brand-blue via-brand-lightBlue to-brand-orange"></div>
+
+  <!-- Page Wrapper Container -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+    
+    <!-- Back Navigation Action -->
+    <div class="mb-6">
+      <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-brand-blue transition-colors group">
+        <i class="fa-solid fa-arrow-left transition-transform duration-200 group-hover:-translate-x-1"></i>
+        Back to Dashboard
+      </a>
+    </div>
+
+    <!-- Header Frame -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Request Emergency Assistance</h1>
+      <p class="text-slate-500 mt-1 text-sm">Specify your dispatch criteria. Our nearest regional responder will clear your hazard line immediately.</p>
+    </div>
+
+    <!-- Request Form Layout Card -->
+    <form id="assistanceForm" class="bg-white rounded-2xl border border-slate-100 shadow-xl p-6 sm:p-8 space-y-6">
+      
+      <!-- Grid Block: Vehicle Basic Indicators -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Vehicle Classification Dropdown -->
+        <div>
+          <label for="vehicleType" class="block text-sm font-semibold text-slate-700 mb-2">Vehicle Type</label>
+          <div class="relative">
+            <select id="vehicleType" required class="block w-full px-4 py-3 bg-slate-50/50 border border-slate-200 rounded-xl appearance-none text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all">
+              <option value="" disabled selected hidden>Select Vehicle Category</option>
+              <option value="sedan">Sedan / Hatchback</option>
+              <option value="suv">SUV / Crossover</option>
+              <option value="truck">Pickup Truck / Van</option>
+              <option value="motorcycle">Motorcycle / Two-Wheeler</option>
+            </select>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-400">
+              <i class="fa-solid fa-chevron-down text-xs"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vehicle Licence Plate Registration String -->
+        <div>
+          <label for="vehicleNumber" class="block text-sm font-semibold text-slate-700 mb-2">Vehicle License Plate</label>
+          <input 
+            type="text" 
+            id="vehicleNumber" 
+            required
+            placeholder="e.g. 7XYZ-2026" 
+            class="block w-full px-4 py-3 bg-slate-50/50 border border-slate-200 rounded-xl text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all uppercase"
+          >
+        </div>
+      </div>
+
+      <!-- Incident Classification Choice Grid -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">Problem Classification</label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <!-- Option 1 -->
+          <label class="border border-slate-200 rounded-xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-all select-none has-[:checked]:border-brand-orange has-[:checked]:bg-brand-orange/5 has-[:checked]:text-brand-orange">
+            <input type="radio" name="problemType" value="flat_tire" required class="sr-only">
+            <i class="fa-solid fa-circle-dot text-lg mb-2"></i>
+            <span class="text-xs font-bold">Flat Tire</span>
+          </label>
+          <!-- Option 2 -->
+          <label class="border border-slate-200 rounded-xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-all select-none has-[:checked]:border-brand-orange has-[:checked]:bg-brand-orange/5 has-[:checked]:text-brand-orange">
+            <input type="radio" name="problemType" value="dead_battery" class="sr-only">
+            <i class="fa-solid fa-car-battery text-lg mb-2"></i>
+            <span class="text-xs font-bold">Dead Battery</span>
+          </label>
+          <!-- Option 3 -->
+          <label class="border border-slate-200 rounded-xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-all select-none has-[:checked]:border-brand-orange has-[:checked]:bg-brand-orange/5 has-[:checked]:text-brand-orange">
+            <input type="radio" name="problemType" value="towing" class="sr-only">
+            <i class="fa-solid fa-truck-pickup text-lg mb-2"></i>
+            <span class="text-xs font-bold">Towing Needed</span>
+          </label>
+          <!-- Option 4 -->
+          <label class="border border-slate-200 rounded-xl p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-slate-50 transition-all select-none has-[:checked]:border-brand-orange has-[:checked]:bg-brand-orange/5 has-[:checked]:text-brand-orange">
+            <input type="radio" name="problemType" value="other" class="sr-only">
+            <i class="fa-solid fa-screwdriver-wrench text-lg mb-2"></i>
+            <span class="text-xs font-bold">Mechanical / Other</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Live GPS Detection Module Component Hook Area -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">Breakdown Location Coordinates</label>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button 
+            type="button" 
+            id="geoDetectBtn" 
+            class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-brand-blue text-white text-sm font-bold rounded-xl shadow-md hover:bg-blue-900 transition-all duration-200 active:scale-95 whitespace-nowrap"
+          >
+            <i class="fa-solid fa-location-crosshairs"></i> Detect Current Location
+          </button>
+          <div class="relative flex-1">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-map-pin text-sm"></i>
+            </div>
+            <input 
+              type="text" 
+              id="locationInput" 
+              required
+              placeholder="Detect location or enter manual marker reference" 
+              class="block w-full pl-10 pr-4 py-3 bg-slate-50/50 border border-slate-200 rounded-xl text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all"
+            >
+          </div>
+        </div>
+        <p id="geoStatus" class="mt-2 text-xs font-semibold text-slate-400 hidden"></p>
+      </div>
+
+      <!-- Problem Context Structural Description TextArea -->
+      <div>
+        <label for="description" class="block text-sm font-semibold text-slate-700 mb-2">Situation Description (Optional)</label>
+        <textarea 
+          id="description" 
+          rows="3" 
+          placeholder="Provide contextual indicators (e.g. stranded in heavy rain, smoke emitting from radiator core, dashboard warning markers showing code A3)" 
+          class="block w-full px-4 py-3 bg-slate-50/50 border border-slate-200 rounded-xl text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Vehicle Condition Image Upload File Area Placeholder (UI Only Variant) -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">Upload Visual Incident Images (UI Only)</label>
+        <div class="border-2 border-dashed border-slate-200 bg-slate-50/50 rounded-xl p-6 flex flex-col items-center justify-center text-center transition-colors hover:bg-slate-50 hover:border-slate-300 cursor-pointer">
+          <i class="fa-regular fa-images text-3xl text-slate-400 mb-2"></i>
+          <span class="text-sm font-medium text-slate-700">Drag images here or browse local file trees</span>
+          <span class="text-xs text-slate-400 mt-1">Supports PNG, JPEG, up to 10MB data buffers</span>
+        </div>
+      </div>
+
+      <!-- Action Footer Submission Button -->
+      <div class="pt-4 border-t border-slate-100">
+        <button 
+          type="submit" 
+          class="w-full py-3.5 bg-gradient-to-r from-brand-orange to-brand-darkOrange hover:from-brand-darkOrange hover:to-brand-darkOrange text-white font-bold rounded-xl shadow-lg shadow-brand-orange/20 transition-all duration-300 hover:-translate-y-0.5"
+        >
+          <i class="fa-solid fa-paper-plane mr-1.5"></i> Broadcast Dispatch Request
+        </button>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- Success State Pop-Up Modal Component Container Structure (Hidden by Default) -->
+  <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white w-full max-w-md rounded-2xl p-6 sm:p-8 shadow-2xl transform scale-95 transition-transform duration-300 text-center relative">
+      
+      <!-- Success Structural Icon Accent -->
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl mb-4 animate-bounce">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+
+      <!-- Information Messaging Hierarchy -->
+      <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Broadcast Signal Active</h3>
+      <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+        Your vehicle request matrix hash has been shared with emergency hubs. A regional mechanic is tracking your coordinates now.
+      </p>
+
+      <!-- Modal Interactive CTA Links -->
+      <div class="space-y-3">
+        <a 
+          href="#" 
+          class="block w-full py-3 bg-brand-blue hover:bg-blue-900 text-white font-bold text-sm rounded-xl shadow-md transition-colors"
+        >
+          Proceed to Live GPS Tracker
+        </a>
+        <button 
+          type="button" 
+          id="closeModalBtn" 
+          class="block w-full py-2.5 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+        >
+          Close Preview Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript Module Handling -->
+  <script>
+    const form = document.getElementById('assistanceForm');
+    const geoBtn = document.getElementById('geoDetectBtn');
+    const geoStatus = document.getElementById('geoStatus');
+    const locationInput = document.getElementById('locationInput');
+    
+    const successModal = document.getElementById('successModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    // Simulated Location Identification Architecture
+    geoBtn.addEventListener('click', () => {
+      geoStatus.classList.remove('hidden', 'text-red-500');
+      geoStatus.classList.add('text-slate-400');
+      geoStatus.innerHTML = '<i class="fa-solid fa-spinner animate-spin mr-1"></i> Simulating GPS geolocation stream ping...';
+
+      setTimeout(() => {
+        geoStatus.innerHTML = '<i class="fa-solid fa-check text-emerald-500 mr-1"></i> Coordinates secured via browser interface.';
+        locationInput.value = "Lat: 22.5626° N, Lon: 72.9629° E (Simulated Highway Node)";
+      }, 1200);
+    });
+
+    // Modal Control Flow Functions
+    function toggleModal(show) {
+      if (show) {
+        successModal.classList.remove('hidden');
+        setTimeout(() => {
+          successModal.classList.remove('opacity-0');
+          successModal.querySelector('.transform').classList.remove('scale-95');
+        }, 10);
+      } else {
+        successModal.classList.add('opacity-0');
+        successModal.querySelector('.transform').classList.add('scale-95');
+        setTimeout(() => {
+          successModal.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    // Capture Form State Pipeline Integration Execution
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      toggleModal(true);
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      toggleModal(false);
+    });
+  </script>
+</body>
+</html>

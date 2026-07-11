@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | RescueLink Assistance & Emergency Support</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1E3A8A',    /* Primary Blue */
+              lightBlue: '#3B82F6',
+              orange: '#F97316',   /* Accent Orange */
+              darkOrange: '#EA580C',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col justify-between font-sans selection:bg-brand-orange selection:text-white">
+
+  <!-- Top Decorative Branding Bar -->
+  <div class="h-1.5 w-full bg-gradient-to-r from-brand-blue via-brand-lightBlue to-brand-orange"></div>
+
+  <!-- Main Container -->
+  <main class="flex-grow flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+    
+    <!-- Decorative Background Blobs -->
+    <div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-brand-lightBlue/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-[-10%] left-[-10%] w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Signup Card Wrapper -->
+    <div class="max-w-md w-full space-y-6 bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-slate-100 relative z-10 transition-all duration-300 hover:shadow-2xl">
+      
+      <!-- Brand Logo & Header -->
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand-orange/10 text-brand-orange mb-3 transition-transform duration-300 hover:scale-105">
+          <i class="fa-solid fa-user-plus text-xl"></i>
+        </div>
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Create Account</h2>
+        <p class="mt-1.5 text-sm text-slate-600">
+          Join us for instant roadside security and coverage
+        </p>
+      </div>
+
+      <!-- Registration Form -->
+      <form class="space-y-4" action="#" method="POST" id="signupForm">
+        
+        <!-- Full Name Input Group -->
+        <div>
+          <label for="fullName" class="block text-sm font-semibold text-slate-700 mb-1.5">Full Name</label>
+          <div class="relative rounded-xl shadow-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-regular fa-user"></i>
+            </div>
+            <input 
+              id="fullName" 
+              name="fullName" 
+              type="text" 
+              required 
+              class="block w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl bg-slate-50/50 placeholder-slate-400 text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all duration-200 text-sm"
+              placeholder="John Doe"
+            >
+          </div>
+        </div>
+
+        <!-- Email Input Group -->
+        <div>
+          <label for="email" class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address</label>
+          <div class="relative rounded-xl shadow-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <input 
+              id="email" 
+              name="email" 
+              type="email" 
+              required 
+              class="block w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl bg-slate-50/50 placeholder-slate-400 text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all duration-200 text-sm"
+              placeholder="name@example.com"
+            >
+          </div>
+        </div>
+
+        <!-- Phone Number Input Group -->
+        <div>
+          <label for="phone" class="block text-sm font-semibold text-slate-700 mb-1.5">Phone Number</label>
+          <div class="relative rounded-xl shadow-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-phone text-xs"></i>
+            </div>
+            <input 
+              id="phone" 
+              name="phone" 
+              type="tel" 
+              required 
+              pattern="[0-9]{10,15}" 
+              class="block w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl bg-slate-50/50 placeholder-slate-400 text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all duration-200 text-sm"
+              placeholder="+1 (555) 000-0000"
+            >
+          </div>
+        </div>
+
+        <!-- Password Input Group -->
+        <div>
+          <label for="password" class="block text-sm font-semibold text-slate-700 mb-1.5">Password</label>
+          <div class="relative rounded-xl shadow-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <input 
+              id="password" 
+              name="password" 
+              type="password" 
+              required 
+              minlength="8"
+              class="block w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl bg-slate-50/50 placeholder-slate-400 text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all duration-200 text-sm"
+              placeholder="Min. 8 characters"
+            >
+          </div>
+        </div>
+
+        <!-- Confirm Password Input Group -->
+        <div>
+          <label for="confirmPassword" class="block text-sm font-semibold text-slate-700 mb-1.5">Confirm Password</label>
+          <div class="relative rounded-xl shadow-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-lock-open text-xs"></i>
+            </div>
+            <input 
+              id="confirmPassword" 
+              name="confirmPassword" 
+              type="password" 
+              required 
+              class="block w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl bg-slate-50/50 placeholder-slate-400 text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all duration-200 text-sm"
+              placeholder="Repeat your password"
+            >
+          </div>
+          <!-- Live Validation Alert Context UI Element -->
+          <p id="passwordMismatchError" class="hidden mt-1 text-xs text-red-500 font-medium">
+            <i class="fa-solid fa-circle-exclamation mr-1"></i> Passwords do not match.
+          </p>
+        </div>
+
+        <!-- Terms & Privacy Acknowledgement Checkbox -->
+        <div class="flex items-start text-xs pt-1">
+          <div class="flex items-center h-5">
+            <input 
+              id="terms" 
+              name="terms" 
+              type="checkbox" 
+              required
+              class="h-4 w-4 text-brand-orange focus:ring-brand-orange border-slate-300 rounded transition-colors cursor-pointer"
+            >
+          </div>
+          <label for="terms" class="ml-2 block text-slate-600 cursor-pointer select-none leading-relaxed">
+            I agree to the <a href="#" class="text-brand-blue font-semibold hover:underline">Terms of Service</a> and <a href="#" class="text-brand-blue font-semibold hover:underline">Privacy Policy</a>.
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-2">
+          <button 
+            type="submit" 
+            class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-brand-orange to-brand-darkOrange hover:from-brand-darkOrange hover:to-brand-darkOrange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange shadow-lg shadow-brand-orange/20 transition-all duration-300 hover:-translate-y-0.5"
+          >
+            Create Account
+          </button>
+        </div>
+      </form>
+
+      <!-- Divider -->
+      <div class="relative my-4">
+        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+        <div class="relative flex justify-center text-sm"><span class="px-2 bg-white text-slate-400">Already registered?</span></div>
+      </div>
+
+      <!-- Link to Login Page -->
+      <div class="text-center">
+        <a href="#" class="inline-flex items-center gap-1.5 font-semibold text-brand-blue hover:text-brand-lightBlue transition-colors duration-200 text-sm group">
+          Sign in to your account
+          <i class="fa-solid fa-arrow-right text-xs transition-transform duration-200 group-hover:translate-x-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Clean Footer Utility -->
+  <footer class="py-4 text-center text-xs text-slate-400 border-t border-slate-100 bg-white/50 backdrop-blur-sm">
+    &copy; 2026 RescueLink Assistance & Emergency Support Inc. All rights reserved.
+  </footer>
+
+  <!-- Frontend Form Validation Script -->
+  <script>
+    const form = document.getElementById('signupForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const errorMsg = document.getElementById('passwordMismatchError');
+
+    // Basic real-time visual alignment warning for user experience
+    function validatePasswords() {
+      if (confirmPassword.value && password.value !== confirmPassword.value) {
+        errorMsg.classList.remove('hidden');
+        confirmPassword.classList.add('border-red-400', 'focus:ring-red-400');
+        return false;
+      } else {
+        errorMsg.classList.add('hidden');
+        confirmPassword.classList.remove('border-red-400', 'focus:ring-red-400');
+        return true;
+      }
+    }
+
+    confirmPassword.addEventListener('input', validatePasswords);
+    password.addEventListener('input', validatePasswords);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      if (!validatePasswords()) {
+        confirmPassword.focus();
+        return;
+      }
+
+      alert('Account setup criteria validated! Data schema structured successfully for frontend hook pipelines.');
+    });
+  </script>
+</body>
+</html>

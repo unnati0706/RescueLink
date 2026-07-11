@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanic Profile | Roadside Rescue</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1E3A8A',
+              lightBlue: '#3B82F6',
+              orange: '#F97316',
+              darkOrange: '#EA580C',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-800 selection:bg-brand-orange selection:text-white">
+
+  <!-- Top Gradient Accent Bar -->
+  <div class="h-1.5 w-full bg-gradient-to-r from-brand-blue via-brand-lightBlue to-brand-orange"></div>
+
+  <!-- Page Framework Layout Wrapper -->
+  <main class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    
+    <!-- Navigation Back Link -->
+    <div class="mb-6">
+      <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-brand-blue transition-colors group">
+        <i class="fa-solid fa-arrow-left transition-transform duration-200 group-hover:-translate-x-1"></i>
+        Back to Search Results
+      </a>
+    </div>
+
+    <!-- Main Profile Container Layout Split -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      
+      <!-- Left 2 Columns: Profile Details & Customer Reviews -->
+      <div class="lg:col-span-2 space-y-8">
+        
+        <!-- Mechanic Bio Information Card -->
+        <div class="bg-white border border-slate-100 rounded-2xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
+          <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start text-center sm:text-left">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=300&h=300&q=80" alt="Rajesh Kumar Profile" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover ring-4 ring-slate-100 shadow-md">
+            
+            <div class="flex-1 space-y-2">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Rajesh Kumar</h1>
+                  <p class="text-sm font-semibold text-brand-lightBlue">Senior Automotive Fleet Specialist</p>
+                </div>
+                <span class="inline-flex items-center self-center sm:self-start px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span> Available Now
+                </span>
+              </div>
+
+              <!-- Rating Stats Line Component -->
+              <div class="flex items-center justify-center sm:justify-start gap-4 text-sm text-slate-500 pt-1">
+                <span class="flex items-center gap-1 text-amber-500 font-bold">
+                  <i class="fa-solid fa-star"></i> 4.9
+                </span>
+                <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                <span><i class="fa-solid fa-briefcase mr-1 text-slate-400"></i>8 Years Exp</span>
+                <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                <span><i class="fa-solid fa-circle-check mr-1 text-slate-400"></i>Verified Expert</span>
+              </div>
+
+              <p class="text-sm text-slate-500 leading-relaxed pt-2">
+                Specialized in rapid roadside deployment. Experienced in diagnosing complex engine electronics, high-voltage vehicle circuits, and handling complex winching infrastructure efficiently.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Skills / Competencies Matrix -->
+        <div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
+          <h3 class="font-bold text-slate-900 text-sm uppercase tracking-wider text-slate-400 mb-4">Specialized Endorsements</h3>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-xs font-semibold rounded-xl text-slate-700 flex items-center gap-1.5">
+              <i class="fa-solid fa-car-battery text-brand-lightBlue"></i> Battery Diagnostics
+            </span>
+            <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-xs font-semibold rounded-xl text-slate-700 flex items-center gap-1.5">
+              <i class="fa-solid fa-bolt text-brand-lightBlue"></i> EV Hybrid Circuits
+            </span>
+            <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-xs font-semibold rounded-xl text-slate-700 flex items-center gap-1.5">
+              <i class="fa-solid fa-truck-pickup text-brand-lightBlue"></i> Hydraulic Towing
+            </span>
+            <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-xs font-semibold rounded-xl text-slate-700 flex items-center gap-1.5">
+              <i class="fa-solid fa-screwdriver-wrench text-brand-lightBlue"></i> Engine Refurbishing
+            </span>
+          </div>
+        </div>
+
+        <!-- Customer Review Section -->
+        <div class="space-y-4">
+          <h3 class="font-bold text-slate-900 text-sm uppercase tracking-wider text-slate-400">Verified User Feedback</h3>
+          
+          <!-- Review Card 1 -->
+          <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center font-bold text-brand-blue text-[11px]">
+                  AM
+                </div>
+                <div>
+                  <p class="font-bold text-slate-900">Amit Mishra</p>
+                  <p class="text-slate-400 text-[10px]">Tesla Owner • July 2026</p>
+                </div>
+              </div>
+              <div class="text-amber-500 font-bold flex items-center gap-0.5">
+                <i class="fa-solid fa-star"></i> 5.0
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Arrived within 15 minutes on the bypass road. Quickly identified a thermal relay fault in my starter battery system and safely cleared the dashboard warnings. Highly professional engineer!
+            </p>
+          </div>
+
+          <!-- Review Card 2 -->
+          <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-brand-orange/10 flex items-center justify-center font-bold text-brand-orange text-[11px]">
+                  SK
+                </div>
+                <div>
+                  <p class="font-bold text-slate-900">Sonal K.</p>
+                  <p class="text-slate-400 text-[10px]">SUV Driver • June 2026</p>
+                </div>
+              </div>
+              <div class="text-amber-500 font-bold flex items-center gap-0.5">
+                <i class="fa-solid fa-star"></i> 4.8
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Fast flat tire swap out on highway lane lines. Had all industrial hydraulic jack tools calibrated right on his truck bay. Recommended.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Booking Interface Sidebar Panel -->
+      <aside class="bg-white border border-slate-100 p-6 rounded-2xl shadow-xl space-y-5 lg:col-span-1 sticky top-24">
+        <div>
+          <h3 class="font-bold text-slate-900 text-xs uppercase tracking-wider text-slate-400 mb-1">Service Hub Provider</h3>
+          <p class="font-bold text-slate-900 text-base">Apex Auto Works Ltd.</p>
+        </div>
+
+        <div class="border-t border-slate-100 pt-4 space-y-2 text-xs">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Callout Base Fee</span>
+            <span class="font-bold text-slate-800 text-sm">₹350</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">ETA to current location</span>
+            <span class="font-semibold text-emerald-600 flex items-center gap-1">
+              <i class="fa-solid fa-bolt text-[10px]"></i> ~12 mins
+            </span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500">Distance Node</span>
+            <span class="font-semibold text-slate-800">1.2 km away</span>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <!-- Main CTA Dispatch Booking Trigger Button -->
+          <button class="w-full py-3 bg-gradient-to-r from-brand-orange to-brand-darkOrange hover:from-brand-darkOrange hover:to-brand-darkOrange text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-brand-orange/20 transition-all duration-200 hover:-translate-y-0.5">
+            Confirm Booking & Dispatch
+          </button>
+        </div>
+
+        <!-- Contact Support Utility Button Group inside Card -->
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button class="flex items-center justify-center gap-1.5 py-2 border border-slate-200 hover:bg-slate-50 text-slate-600 text-xs font-semibold rounded-xl transition-colors">
+            <i class="fa-solid fa-phone text-[10px]"></i> Voice Call
+          </button>
+          <button class="flex items-center justify-center gap-1.5 py-2 border border-slate-200 hover:bg-slate-50 text-slate-600 text-xs font-semibold rounded-xl transition-colors">
+            <i class="fa-solid fa-message text-[10px]"></i> Secure Chat
+          </button>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Clean Footer Component -->
+  <footer class="mt-24 py-6 text-center text-xs text-slate-400 border-t border-slate-100 bg-white">
+    &copy; 2026 RescueLink Assistance Hub Systems. Profiles are identity cryptographically verified.
+  </footer>
+
+</body>
+</html>

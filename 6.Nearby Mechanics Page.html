@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nearby Mechanics | RescueLink</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#1E3A8A',
+              lightBlue: '#3B82F6',
+              orange: '#F97316',
+              darkOrange: '#EA580C',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-800 selection:bg-brand-orange selection:text-white">
+
+  <!-- Top Gradient Accent Bar -->
+  <div class="h-1.5 w-full bg-gradient-to-r from-brand-blue via-brand-lightBlue to-brand-orange"></div>
+
+  <!-- Page Framework Layout Wrapper -->
+  <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    
+    <!-- Top Nav Action Row -->
+    <div class="mb-6 flex items-center justify-between">
+      <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-brand-blue transition-colors group">
+        <i class="fa-solid fa-arrow-left transition-transform duration-200 group-hover:-translate-x-1"></i>
+        Back to Dashboard
+      </a>
+      <!-- Active Location Indicator -->
+      <div class="text-xs bg-slate-200/60 font-semibold px-3 py-1.5 rounded-full text-slate-600 flex items-center gap-1.5 shadow-sm">
+        <i class="fa-solid fa-location-crosshairs text-brand-orange animate-pulse"></i>
+        Radar: Anand, Gujarat
+      </div>
+    </div>
+
+    <!-- Page Header Section -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Available Nearby Mechanics</h1>
+      <p class="text-slate-500 mt-1 text-sm">Real-time listing of verified mobile engineering teams ready for dynamic field deployment.</p>
+    </div>
+
+    <!-- Main Content Structural Split System -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      
+      <!-- Left Column: Search & Filter Panel Sidebar Component -->
+      <aside class="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm space-y-6 lg:col-span-1">
+        <div>
+          <h3 class="font-bold text-slate-900 text-sm uppercase tracking-wider text-slate-400 mb-3">Refine Search</h3>
+          
+          <!-- Search Input Box Element -->
+          <div class="relative rounded-xl shadow-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            </div>
+            <input 
+              type="text" 
+              placeholder="Search garage name..." 
+              class="block w-full pl-9 pr-3 py-2 bg-slate-50/50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent"
+            >
+          </div>
+        </div>
+
+        <!-- Filter Sub-Section: Skill Categories -->
+        <div>
+          <h4 class="text-xs font-bold text-slate-700 uppercase mb-2">Specializations</h4>
+          <div class="space-y-2">
+            <label class="flex items-center text-xs font-medium text-slate-600 cursor-pointer">
+              <input type="checkbox" checked class="h-3.5 w-3.5 text-brand-orange focus:ring-brand-orange border-slate-300 rounded mr-2">
+              Towing & Hauling
+            </label>
+            <label class="flex items-center text-xs font-medium text-slate-600 cursor-pointer">
+              <input type="checkbox" checked class="h-3.5 w-3.5 text-brand-orange focus:ring-brand-orange border-slate-300 rounded mr-2">
+              Battery & Electrical
+            </label>
+            <label class="flex items-center text-xs font-medium text-slate-600 cursor-pointer">
+              <input type="checkbox" class="h-3.5 w-3.5 text-brand-orange focus:ring-brand-orange border-slate-300 rounded mr-2">
+              Tire Diagnostics
+            </label>
+            <label class="flex items-center text-xs font-medium text-slate-600 cursor-pointer">
+              <input type="checkbox" class="h-3.5 w-3.5 text-brand-orange focus:ring-brand-orange border-slate-300 rounded mr-2">
+              Engine Mechanics
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter Sub-Section: Sort Architecture Dropdown -->
+        <div>
+          <h4 class="text-xs font-bold text-slate-700 uppercase mb-2">Sorting Order</h4>
+          <div class="relative">
+            <select class="block w-full px-3 py-2 bg-slate-50/50 border border-slate-200 rounded-xl appearance-none text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-blue">
+              <option value="distance">Distance: Closest First</option>
+              <option value="rating">Rating: Highest First</option>
+              <option value="experience">Experience: Senior First</option>
+            </select>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">
+              <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Column: Interactive Mechanics Listing Grid System (3 Columns Wide) -->
+      <section class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        
+        <!-- Mechanic Card Component 1 -->
+        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
+          <!-- Top Badge Bar -->
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+              <span class="w-1 h-1 rounded-full bg-emerald-500 mr-1 animate-pulse"></span> Available Now
+            </span>
+            <span class="text-xs font-bold text-slate-400"><i class="fa-solid fa-road mr-1 text-slate-300"></i>1.2 km</span>
+          </div>
+
+          <!-- Profile Header Section inside Card -->
+          <div class="flex items-start gap-3 mb-4">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=150&h=150&q=80" alt="Mechanic Profile" class="w-12 h-12 rounded-xl object-cover ring-2 ring-slate-100 group-hover:ring-brand-lightBlue transition-all">
+            <div>
+              <h3 class="font-bold text-slate-900 group-hover:text-brand-blue transition-colors text-sm">Rajesh Kumar</h3>
+              <p class="text-xs text-slate-400">Apex Auto Works</p>
+              <!-- Star Rating Grid Group -->
+              <div class="flex items-center gap-1 mt-1 text-amber-500 text-xs">
+                <i class="fa-solid fa-star"></i>
+                <span class="font-bold text-slate-700 text-xs">4.9</span>
+                <span class="text-slate-400 font-normal text-[10px]">(142 orders)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Professional Metadata Details Matrix -->
+          <div class="border-t border-b border-slate-100 py-3 my-1 space-y-1.5 text-xs text-slate-500">
+            <div class="flex justify-between"><span>Experience:</span><span class="font-semibold text-slate-800">8 Years</span></div>
+            <div class="flex justify-between"><span>Core Skill:</span><span class="font-semibold text-slate-800">Electrical & Battery</span></div>
+            <div class="flex justify-between"><span>Callout Rate:</span><span class="font-semibold text-brand-orange">₹350 base</span></div>
+          </div>
+
+          <!-- Interactive Action Click Trigger Component -->
+          <div class="mt-4">
+            <a href="#" class="block w-full text-center py-2 bg-slate-50 hover:bg-brand-blue hover:text-white font-bold text-xs rounded-xl border border-slate-100 transition-all">
+              View Profile & Book
+            </a>
+          </div>
+        </div>
+
+        <!-- Mechanic Card Component 2 -->
+        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+              <span class="w-1 h-1 rounded-full bg-emerald-500 mr-1 animate-pulse"></span> Available Now
+            </span>
+            <span class="text-xs font-bold text-slate-400"><i class="fa-solid fa-road mr-1 text-slate-300"></i>2.7 km</span>
+          </div>
+
+          <div class="flex items-start gap-3 mb-4">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&h=150&q=80" alt="Mechanic Profile" class="w-12 h-12 rounded-xl object-cover ring-2 ring-slate-100 group-hover:ring-brand-lightBlue transition-all">
+            <div>
+              <h3 class="font-bold text-slate-900 group-hover:text-brand-blue transition-colors text-sm">Vikram Singh</h3>
+              <p class="text-xs text-slate-400">National Towing Services</p>
+              <div class="flex items-center gap-1 mt-1 text-amber-500 text-xs">
+                <i class="fa-solid fa-star"></i>
+                <span class="font-bold text-slate-700 text-xs">4.8</span>
+                <span class="text-slate-400 font-normal text-[10px]">(98 orders)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-b border-slate-100 py-3 my-1 space-y-1.5 text-xs text-slate-500">
+            <div class="flex justify-between"><span>Experience:</span><span class="font-semibold text-slate-800">12 Years</span></div>
+            <div class="flex justify-between"><span>Core Skill:</span><span class="font-semibold text-slate-800">Heavy Duty Towing</span></div>
+            <div class="flex justify-between"><span>Callout Rate:</span><span class="font-semibold text-brand-orange">₹500 base</span></div>
+          </div>
+
+          <div class="mt-4">
+            <a href="#" class="block w-full text-center py-2 bg-slate-50 hover:bg-brand-blue hover:text-white font-bold text-xs rounded-xl border border-slate-100 transition-all">
+              View Profile & Book
+            </a>
+          </div>
+        </div>
+
+        <!-- Mechanic Card Component 3 -->
+        <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
+              <span class="w-1 h-1 rounded-full bg-amber-500 mr-1"></span> In Transit (15m)
+            </span>
+            <span class="text-xs font-bold text-slate-400"><i class="fa-solid fa-road mr-1 text-slate-300"></i>4.1 km</span>
+          </div>
+
+          <div class="flex items-start gap-3 mb-4">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80" alt="Mechanic Profile" class="w-12 h-12 rounded-xl object-cover ring-2 ring-slate-100 group-hover:ring-brand-lightBlue transition-all">
+            <div>
+              <h3 class="font-bold text-slate-900 group-hover:text-brand-blue transition-colors text-sm">Priya Sharma</h3>
+              <p class="text-xs text-slate-400">Express Tire Care</p>
+              <div class="flex items-center gap-1 mt-1 text-amber-500 text-xs">
+                <i class="fa-solid fa-star"></i>
+                <span class="font-bold text-slate-700 text-xs">4.7</span>
+                <span class="text-slate-400 font-normal text-[10px]">(210 orders)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-b border-slate-100 py-3 my-1 space-y-1.5 text-xs text-slate-500">
+            <div class="flex justify-between"><span>Experience:</span><span class="font-semibold text-slate-800">5 Years</span></div>
+            <div class="flex justify-between"><span>Core Skill:</span><span class="font-semibold text-slate-800">Tire Diagnostics</span></div>
+            <div class="flex justify-between"><span>Callout Rate:</span><span class="font-semibold text-brand-orange">₹300 base</span></div>
+          </div>
+
+          <div class="mt-4">
+            <a href="#" class="block w-full text-center py-2 bg-slate-50 hover:bg-brand-blue hover:text-white font-bold text-xs rounded-xl border border-slate-100 transition-all">
+              View Profile & Book
+            </a>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Clean Footer Component Container -->
+  <footer class="mt-24 py-6 text-center text-xs text-slate-400 border-t border-slate-100 bg-white">
+    &copy; 2026 RescueLink Assistance Network. Radar tracking grids updated continuously.
+  </footer>
+
+</body>
+</html>
+
